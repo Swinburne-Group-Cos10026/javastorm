@@ -13,9 +13,9 @@
 * */
 :root {
   /* setting default and global variable for typography */
-  --gutter: clamp(3ch, 2.5vmax, 3.75ch);
+  --gutter: clamp(4ch, 3.5vmax, 4.75ch);
   --stack: clamp(1.25ex, 2.5vmax, 1.75ex);
-  --paragraph-indent: calc(var(--gutter) / 1.5);
+  --paragraph-indent: calc(var(--gutter) / 1.3);
   --line-length: 60ch;
   --page-padding-inline: calc((100vw - min(var(--line-length), 80vw)) / 2);
   --font-serif: "Georgia", serif;
@@ -57,7 +57,14 @@ body {
 }
 
 main {
+	overflow-x: hidden;
+  padding: 0 10%;
+}
+
+@media only screen and (max-width: 600px) {
+main {
   padding: 0 var(--paragraph-indent);
+}
 }
 
 /* reset default css for all element with '*' */
@@ -123,12 +130,12 @@ h2 {
 
 h3 {
   letter-spacing: 0.25px;
-  font-size: 2.5em;
+  font-size: 2em;
 }
 
 h4 {
   letter-spacing: 0.5px;
-  font-size: 2em;
+  font-size: 1.75em;
 }
 
 h5 {
@@ -148,7 +155,7 @@ p {
 
 p {
   /* space between paragraph */
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.5em;
 }
 
 /***************
@@ -334,26 +341,26 @@ fieldset legend {
 	padding: 0 3px;
 }
 
-input[type='radio'] {
+input[type='radio'].radio {
   display: none;
 }
 
-input[type='radio']:checked + label:after {
+input[type='radio'].radio:checked + label:after {
   transform: scale(1);
 }
 
-input[type='radio']:checked + label {
+input[type='radio'].radio:checked + label {
 	color: black;
 }
 
-input[type='radio'] + label {
+input[type='radio'].radio + label {
   color: #aaa;
   position: relative;
   padding-left: 24px;
   cursor: pointer;
 }
 
-input[type='radio'] + label:before {
+input[type='radio'].radio + label:before {
   content: "";
   position: absolute;
   width: 16px;
@@ -364,7 +371,7 @@ input[type='radio'] + label:before {
 	top: calc(50% - 8px);
 }
 
-input[type='radio'] + label:after {
+input[type='radio'].radio + label:after {
   content: "";
   position: absolute;
   width: 12px;
@@ -378,15 +385,74 @@ input[type='radio'] + label:after {
 }
 
 @media only screen and (max-width: 600px) {
-input[type='radio'] + label:before {
+input[type='radio'].radio + label:before {
   left: 2px;
 	top: calc(25% - 8px);
 }
 
-input[type='radio'] + label:after {
+input[type='radio'].radio + label:after {
   left: 4px;
 	top: calc(25% - 8px + 2px);
 }
+}
+
+/*********************
+* Definition list
+***********************/
+
+dl {
+	display: grid;
+	grid-template-columns: auto minmax(75%, 1fr);
+	gap: calc(var(--gutter) / 2);
+	align-items: baseline;
+	padding-block-start: calc(var(--stack) / 2.5);
+}
+
+dd {
+	block-size: 100%;
+	border-image-slice: 1;
+	padding-block: calc(var(--stack) / 6);
+	padding-inline: calc(var(--gutter) / 3);
+}
+
+dt {
+	/* no actual common size 
+*  The common size is from
+*  the grid on dl
+*  which is 25%*/
+	text-decoration: underline;
+	text-decoration-style: dotted;
+	text-underline-offset: 0.3ex;
+}
+
+/****************
+* Table
+* ***************/
+
+table {
+	border-collapse: collapse;
+	border-radius: 10px;
+	/* border for table with border collapse */
+	border-style: hidden;
+	box-shadow: 0 0 0 1px var(--accent-darker);
+	overflow: hidden;
+}
+
+table,
+th,
+td {
+	padding: 8px;
+	text-align: center;
+	border: 1px solid var(--accent-darker);
+}
+
+th {
+	color: white;
+	background-color: var(--accent);
+}
+
+.time {
+	font-weight: bold;
 }
 
 /******************
@@ -484,7 +550,7 @@ header {
 	box-shadow: rgba(216, 222, 233, 0.15) 0px 5px 10px 0px;
 	width: 100%;
 	height: 80px;
-	padding: .6em;
+	padding: .6em var(--paragraph-indent);
 	margin-bottom: .5em;
 	display: flex;
 	justify-content: space-between;
@@ -635,9 +701,208 @@ nav a:nth-child(5):hover ~ #indicator {
 }
 
 /*******
+* About Page
+********/
+
+.group-info__dl {
+	height: 400px;
+	float: left;
+}
+
+.group-info__figure {
+	display: block;
+}
+
+.group-info__figure img {
+	height: 400px;
+	border: 2px dotted black;
+	border-radius: 10px;
+}
+
+/* Setting size of the card */
+.team-members__container {
+	float: clear;
+	display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+	.team-members__container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+
+.personal-info-card {
+	position: relative;
+  height: 360px;
+  width: 270px;
+}
+
+.personal-info-card figcaption {
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	font-size: 1.2em;
+	font-family: var(--font-heading);
+}
+
+.personal-info-card .personal-info-card__role {
+	position: absolute;
+	bottom: 15px;
+	right: 15px;
+	font-size: .8em;
+	font-family: var(--font-sans);
+}
+
+.personal-info-card figcaption,
+.personal-info-card .personal-info-card__role {
+	color: white;
+	/* color: color(--accent); */
+	text-shadow: 1px 1px 2px var(--accent-darker);
+	/* text-shadow: 1px 1px 2px white; */
+}
+
+/* contain the image */
+.personal-info-card__border {
+	display: block;
+	border-radius: 10px;
+	position: relative;
+	width: 270px;
+  height: 360px;
+	background-size: 300px;
+	background-repeat: no-repeat;
+	background-position: center;
+	transition: ease-in-out 600ms background;
+	z-index: 10;
+}
+
+.personal-info-card__border::before {
+	content: "";
+	position: absolute;
+	display: block;
+	/* border around the card */
+	/* margin 10px -> position 5px */
+	top: 5px;
+	left: 5px;
+	width: 260px;
+  height: 350px;
+	transition: ease-in-out 300ms border;
+	border-radius: 10px;
+	border: 2px solid;
+	border-color: transparent;
+}
+
+.personal-info-card__detail {
+	position: absolute;
+	width: 600px;
+  height: 350px;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	font-size: .8em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+.personal-info-card__detail {
+	width: 300px;
+}
+}
+
+/* Setting background photo for each person */
+.personal-info-card--Pham .personal-info-card__border {
+	background-image: url("images/Pham.JPG");
+}
+.personal-info-card--Minh .personal-info-card__border {
+	background-image: url("images/Minh.JPG");
+}
+.personal-info-card--Jean .personal-info-card__border {
+	background-image: url("images/Jean.JPG");
+}
+.personal-info-card--Indigo .personal-info-card__border {
+	background-image: url("images/Indigo.JPG");
+}
+.personal-info-card--Burhan .personal-info-card__border {
+	background-image: url("images/Burhan.jpg");
+}
+
+.personal-info-card figcaption,
+.personal-info-card__role,
+.personal-info-card__detail {
+	opacity: 0;
+	transition: ease-in-out 300ms transform;
+}
+
+.personal-info-card:hover .personal-info-card__border {
+	background-position: left;
+	background-size: 450px;
+}
+
+.personal-info-card:has(input[name="personal-info-card__label"]:checked) .personal-info-card__border::before,
+.personal-info-card:hover .personal-info-card__border::before {
+	border-color: white;
+}
+
+/* make radio button disappear */
+input[name="personal-info-card__label"] {
+	display: none;
+}
+
+.personal-info-card:hover figcaption,
+.personal-info-card:hover .personal-info-card__role,
+.personal-info-card:has(input[name="personal-info-card__label"]:checked) figcaption,
+.personal-info-card:has(input[name="personal-info-card__label"]:checked) .personal-info-card__role,
+.personal-info-card:has(input[name="personal-info-card__label"]:checked) .personal-info-card__detail {
+	opacity: 1;
+}
+
+.personal-info-card:has(input[name="personal-info-card__label"]:checked) {
+	grid-column-start: 1;
+	grid-column-end: span 5;
+	grid-row-start: 1;
+}
+
+.personal-info-card:has(input[name="personal-info-card__label"]:checked) .personal-info-card__detail {
+	/* Move out of the card (width 270px)
+	 * with margin 30px */
+	transform: translateX(300px);
+}
+
+@media only screen and (max-width: 600px) {
+.personal-info-card:has(input[name="personal-info-card__label"]:checked) {
+	height: 650px;
+}
+.personal-info-card:has(input[name="personal-info-card__label"]:checked) .personal-info-card__detail {
+	/* Move out of the card (width 270px)
+	 * with margin 5px */
+	transform: translateX(0) translateY(330px);
+}
+}
+
+.timetable__container {
+	/* show the border of the table */
+	padding: 1px;
+	overflow-x: auto;
+}
+
+.timetable__container table {
+	width: 50%;
+}
+
+/*******
 * Apply Page
 ********/
 
+/* Make form grid so that i can have some 
+* input only half size and in the same
+* line as other input */
 #form__apply {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -649,6 +914,8 @@ nav a:nth-child(5):hover ~ #indicator {
 	text-align: center;
 }
 
+
+/* Making some input fullsize */
 #form__apply button,
 #form__apply h1,
 #form__apply h5,
@@ -660,9 +927,12 @@ nav a:nth-child(5):hover ~ #indicator {
 	width: 100%;
 }
 
+/* Other skill textarea only pop up if 
+* chosen */
 #skill-others__textarea {
 	margin-top: 1em;
 	display: none;
+	resize: none;
 }
 
 #skill-others:checked ~ #skill-others__textarea {
