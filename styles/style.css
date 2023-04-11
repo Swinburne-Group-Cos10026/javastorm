@@ -35,7 +35,7 @@
   --pt-bourgeois: 0.75em;
   font-family: var(--font-sans);
   /* flexible font-size with view port */
-  font-size: clamp(100%, 90% + 0.5vw, 150%);
+  font-size: clamp(100%, 70% + 0.5vw, 150%);
   /* easier to read with bigger line height */
   line-height: 1.3;
 
@@ -43,6 +43,7 @@
   color-scheme: light;
   /* default colour for default ui elements */
   --accent: #5382a1;
+  --accent-lighter: #90bad6;
   --accent-darker: #17252e;
   --bg: aliceblue;
   --bg-darker: #e5e9f0;
@@ -53,18 +54,18 @@
 /* default background colour - not #ffffff cause too bright */
 body {
   background-color: var(--bg);
-	padding: 0;
+  padding: 0;
 }
 
 main {
-	overflow-x: hidden;
+  overflow-x: hidden;
   padding: 0 10%;
 }
 
 @media only screen and (max-width: 600px) {
-main {
-  padding: 0 var(--paragraph-indent);
-}
+  main {
+    padding: 0 var(--paragraph-indent);
+  }
 }
 
 /* reset default css for all element with '*' */
@@ -114,13 +115,14 @@ h4,
 h5 {
   font-family: var(--font-heading);
   /* space after headers */
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 0;
 }
 
 h1 {
   /* the requirement askes me to have short-hand font for h1 */
   font: bold 4em var(--font-heading);
   letter-spacing: 0.5px;
+  margin: 0.5rem 0;
 }
 
 h2 {
@@ -184,7 +186,7 @@ select {
   outline-color: transparent;
   transition: padding 0.4s;
   font-size: 1em;
-	width: 100%;
+  width: 100%;
 }
 
 input:focus {
@@ -249,11 +251,11 @@ input:not([type="radio"], [type="checkbox"], [type="file"]):not(
 }
 
 /* checkbox */
-input[type='checkbox'].checkbox {
+input[type="checkbox"].checkbox {
   display: none;
 }
 
-input[type='checkbox'].checkbox + label {
+input[type="checkbox"].checkbox + label {
   position: relative;
   vertical-align: middle;
   cursor: pointer;
@@ -261,7 +263,7 @@ input[type='checkbox'].checkbox + label {
   padding-left: 35px;
 }
 
-input[type='checkbox'].checkbox + label span.box {
+input[type="checkbox"].checkbox + label span.box {
   display: inline-block;
   width: 20px;
   border-radius: 5px;
@@ -275,8 +277,8 @@ input[type='checkbox'].checkbox + label span.box {
   left: 0;
 }
 
-input[type='checkbox'].checkbox + label span.box:before,
-input[type='checkbox'].checkbox + label span.box:after {
+input[type="checkbox"].checkbox + label span.box:before,
+input[type="checkbox"].checkbox + label span.box:after {
   content: "";
   position: absolute;
   width: 4px;
@@ -286,81 +288,81 @@ input[type='checkbox'].checkbox + label span.box:after {
   transition: all 0.3s ease;
 }
 
-input[type='checkbox'].checkbox + label span.box:before {
+input[type="checkbox"].checkbox + label span.box:before {
   transform: rotate(45deg) translateY(-5px) translateX(10px) scale(0);
 }
 
-input[type='checkbox'].checkbox + label span.box:after {
+input[type="checkbox"].checkbox + label span.box:after {
   height: 8px;
   transform: rotate(-45deg) translateY(10px) translateX(-4px) scale(0);
 }
 
-input[type='checkbox'].checkbox:checked + label span.box {
+input[type="checkbox"].checkbox:checked + label span.box {
   background: var(--accent);
   border-color: var(--accent);
 }
 
-input[type='checkbox'].checkbox:checked + label span.box:before {
+input[type="checkbox"].checkbox:checked + label span.box:before {
   transform: rotate(45deg) translateY(-5px) translateX(10px) scale(1);
 }
 
-input[type='checkbox'].checkbox:checked + label span.box:after {
+input[type="checkbox"].checkbox:checked + label span.box:after {
   height: 8px;
   transform: rotate(-45deg) translateY(10px) translateX(-4px) scale(1);
 }
 
-input[type='checkbox'].checkbox:disabled:checked + label span.box {
+input[type="checkbox"].checkbox:disabled:checked + label span.box {
   background: var(--bg);
   border: var(--bg);
 }
 
-input[type='checkbox'].checkbox:disabled:checked + label:before,
-input[type='checkbox'].checkbox:disabled:checked + label:after {
+input[type="checkbox"].checkbox:disabled:checked + label:before,
+input[type="checkbox"].checkbox:disabled:checked + label:after {
   background: black;
 }
 
-/*radio buttons*/
+/* radio buttons */
 fieldset {
-	display: flex;
+  display: flex;
   border: 2px solid gray;
   border-radius: 5px;
   background-color: var(--bg-input);
-	align-items: center;
-	justify-content: space-around;
-	width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
 }
 
 fieldset .form-control {
-	margin-bottom: 0;
-	text-align: center;
+  margin-bottom: 0;
+  text-align: center;
 }
 
 fieldset legend {
-	font-family: var(--font-sans);
-	font-size: .8em;
-	padding: 0 3px;
+  font-family: var(--font-sans);
+  font-size: 0.8em;
+  padding: 0 3px;
 }
 
-input[type='radio'].radio {
+input[type="radio"].radio {
   display: none;
 }
 
-input[type='radio'].radio:checked + label:after {
+input[type="radio"].radio:checked + label:after {
   transform: scale(1);
 }
 
-input[type='radio'].radio:checked + label {
-	color: black;
+input[type="radio"].radio:checked + label {
+  color: black;
 }
 
-input[type='radio'].radio + label {
+input[type="radio"].radio + label {
   color: #aaa;
   position: relative;
   padding-left: 24px;
   cursor: pointer;
 }
 
-input[type='radio'].radio + label:before {
+input[type="radio"].radio + label:before {
   content: "";
   position: absolute;
   width: 16px;
@@ -368,10 +370,10 @@ input[type='radio'].radio + label:before {
   border: 1.3px solid #aaa;
   border-radius: 50%;
   left: 0;
-	top: calc(50% - 8px);
+  top: calc(50% - 8px);
 }
 
-input[type='radio'].radio + label:after {
+input[type="radio"].radio + label:after {
   content: "";
   position: absolute;
   width: 12px;
@@ -385,44 +387,55 @@ input[type='radio'].radio + label:after {
 }
 
 @media only screen and (max-width: 600px) {
-input[type='radio'].radio + label:before {
-  left: 2px;
-	top: calc(25% - 8px);
-}
+  input[type="radio"].radio + label:before {
+    left: 2px;
+    top: calc(25% - 8px);
+  }
 
-input[type='radio'].radio + label:after {
-  left: 4px;
-	top: calc(25% - 8px + 2px);
-}
+  input[type="radio"].radio + label:after {
+    left: 4px;
+    top: calc(25% - 8px + 2px);
+  }
 }
 
 /*********************
-* Definition list
+* Lists
 ***********************/
 
+ul,
+ol {
+	margin-block-start: var(--stack);
+}
+
+/* make list character start at the normal
+* position like other texts */
+li {
+	margin-inline-start: 2ch;
+}
+
 dl {
-	display: grid;
-	grid-template-columns: auto minmax(75%, 1fr);
-	gap: calc(var(--gutter) / 2);
-	align-items: baseline;
-	padding-block-start: calc(var(--stack) / 2.5);
+  display: grid;
+  grid-template-columns: auto minmax(75%, 1fr);
+  gap: calc(var(--gutter) / 2);
+  align-items: baseline;
+  padding-block-start: calc(var(--stack) / 2.5);
 }
 
 dd {
-	block-size: 100%;
-	border-image-slice: 1;
-	padding-block: calc(var(--stack) / 6);
-	padding-inline: calc(var(--gutter) / 3);
+  block-size: 100%;
+  border-image-slice: 1;
+  padding-block: calc(var(--stack) / 6);
+  padding-inline: calc(var(--gutter) / 3);
 }
 
 dt {
-	/* no actual common size 
+  /* no actual common size 
 *  The common size is from
 *  the grid on dl
 *  which is 25%*/
-	text-decoration: underline;
-	text-decoration-style: dotted;
-	text-underline-offset: 0.3ex;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 0.3ex;
 }
 
 /****************
@@ -430,29 +443,29 @@ dt {
 * ***************/
 
 table {
-	border-collapse: collapse;
-	border-radius: 10px;
-	/* border for table with border collapse */
-	border-style: hidden;
-	box-shadow: 0 0 0 1px var(--accent-darker);
-	overflow: hidden;
+  border-collapse: collapse;
+  border-radius: 10px;
+  /* border for table with border collapse */
+  border-style: hidden;
+  box-shadow: 0 0 0 1px var(--accent-darker);
+  overflow: hidden;
 }
 
 table,
 th,
 td {
-	padding: 8px;
-	text-align: center;
-	border: 1px solid var(--accent-darker);
+  padding: 8px;
+  text-align: center;
+  border: 1px solid var(--accent-darker);
 }
 
 th {
-	color: white;
-	background-color: var(--accent);
+  color: white;
+  background-color: var(--accent);
 }
 
 .time {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 /******************
@@ -487,9 +500,11 @@ a.link:focus {
   background-size: 0 0.1em, 100% 0.1em;
 }
 
-button {
+/* use class instead of the element button
+* since we can have button as input or a tag */
+.btn {
   position: relative;
-	font-size: .8em;
+  font-size: 0.8em;
 
   display: block;
   margin: 30px auto;
@@ -500,29 +515,29 @@ button {
   border-width: 0;
   outline: none;
   border-radius: 2px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 
   background-color: var(--accent);
   color: #ecf0f1;
 
-  transition: background-color .3s;
+  transition: background-color 0.3s;
 }
 
-button:hover,
-button:focus {
+.btn:hover,
+.btn:focus {
   filter: brightness(85%);
 }
 
-button > * {
+.btn > * {
   position: relative;
 }
 
-button span {
+.btn span {
   display: block;
   padding: 12px 24px;
 }
 
-button:before {
+.btn:before {
   content: "";
   position: absolute;
   top: 50%;
@@ -535,35 +550,35 @@ button:before {
   transform: translate(-50%, -50%);
 }
 
-button:active:before {
+.btn:active:before {
   width: 120%;
   padding-top: 120%;
-  
-  transition: width .2s ease-out, padding-top .2s ease-out;
+
+  transition: width 0.2s ease-out, padding-top 0.2s ease-out;
 }
 
 /**********
 * Nav Bar *
 ***********/
 header {
-	background-color: var(--accent-darker);
-	box-shadow: rgba(216, 222, 233, 0.15) 0px 5px 10px 0px;
-	width: 100%;
-	height: 80px;
-	padding: .6em var(--paragraph-indent);
-	margin-bottom: .5em;
-	display: flex;
-	justify-content: space-between;
-	color: var(--bg);
+  background-color: var(--accent-darker);
+  box-shadow: rgba(216, 222, 233, 0.15) 0px 5px 10px 0px;
+  width: 100%;
+  height: 80px;
+  padding: 0.6em var(--paragraph-indent);
+  margin-bottom: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  color: var(--bg);
 }
 
 header + img {
-	width: 600px;
+  width: 600px;
 }
 
 nav {
-	position: absolute;
-	right: 0;
+  position: absolute;
+  right: 0;
   display: table;
 }
 
@@ -651,19 +666,19 @@ nav a:nth-child(5):after {
 }
 
 nav a:nth-child(1).nav-link__current ~ #indicator {
-	left: 0%;
+  left: 0%;
 }
 nav a:nth-child(2).nav-link__current ~ #indicator {
-	left: 20%;
+  left: 20%;
 }
 nav a:nth-child(3).nav-link__current ~ #indicator {
-	left: 40%;
+  left: 40%;
 }
 nav a:nth-child(4).nav-link__current ~ #indicator {
-	left: 60%;
+  left: 60%;
 }
 nav a:nth-child(5).nav-link__current ~ #indicator {
-	left: 80%;
+  left: 80%;
 }
 
 nav a:hover {
@@ -705,195 +720,202 @@ nav a:nth-child(5):hover ~ #indicator {
 ********/
 
 .group-info__dl {
-	height: 400px;
-	float: left;
+  height: 400px;
+  float: left;
 }
 
 .group-info__figure {
-	display: block;
+  display: block;
 }
 
 .group-info__figure img {
-	height: 400px;
-	border: 2px dotted black;
-	border-radius: 10px;
+  height: 400px;
+  border: 2px dotted black;
+  border-radius: 10px;
 }
 
 /* Setting size of the card */
 .team-members__container {
-	float: clear;
-	display: grid;
+  float: clear;
+  display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
 }
 
 @media only screen and (max-width: 600px) {
-	.team-members__container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		grid-template-columns: repeat(1, 1fr);
-	}
+  .team-members__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .personal-info-card {
-	position: relative;
+  position: relative;
   height: 360px;
   width: 270px;
 }
 
 .personal-info-card figcaption {
-	position: absolute;
-	top: 15px;
-	left: 15px;
-	font-size: 1.2em;
-	font-family: var(--font-heading);
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 1.2em;
+  font-family: var(--font-heading);
 }
 
 .personal-info-card .personal-info-card__role {
-	position: absolute;
-	bottom: 15px;
-	right: 15px;
-	font-size: .8em;
-	font-family: var(--font-sans);
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  font-size: 0.8em;
+  font-family: var(--font-sans);
 }
 
 .personal-info-card figcaption,
 .personal-info-card .personal-info-card__role {
-	color: white;
-	/* color: color(--accent); */
-	text-shadow: 1px 1px 2px var(--accent-darker);
-	/* text-shadow: 1px 1px 2px white; */
+  color: white;
+  /* color: color(--accent); */
+  text-shadow: 1px 1px 2px var(--accent-darker);
+  /* text-shadow: 1px 1px 2px white; */
 }
 
 /* contain the image */
 .personal-info-card__border {
-	display: block;
-	border-radius: 10px;
-	position: relative;
-	width: 270px;
+  display: block;
+  border-radius: 10px;
+  position: relative;
+  width: 270px;
   height: 360px;
-	background-size: 300px;
-	background-repeat: no-repeat;
-	background-position: center;
-	transition: ease-in-out 600ms background;
-	z-index: 10;
+  background-size: 300px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: ease-in-out 600ms background;
+  z-index: 10;
 }
 
 .personal-info-card__border::before {
-	content: "";
-	position: absolute;
-	display: block;
-	/* border around the card */
-	/* margin 10px -> position 5px */
-	top: 5px;
-	left: 5px;
-	width: 260px;
+  content: "";
+  position: absolute;
+  display: block;
+  /* border around the card */
+  /* margin 10px -> position 5px */
+  top: 5px;
+  left: 5px;
+  width: 260px;
   height: 350px;
-	transition: ease-in-out 300ms border;
-	border-radius: 10px;
-	border: 2px solid;
-	border-color: transparent;
+  transition: ease-in-out 300ms border;
+  border-radius: 10px;
+  border: 2px solid;
+  border-color: transparent;
 }
 
 .personal-info-card__detail {
-	position: absolute;
-	width: 600px;
+  position: absolute;
+  width: 600px;
   height: 350px;
-	top: 0;
-	left: 0;
-	z-index: -1;
-	font-size: .8em;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+  top: 0;
+  left: 270px;
+  z-index: -1;
+  font-size: 0.8em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 600px) {
-.personal-info-card__detail {
-	width: 300px;
-}
+  .personal-info-card__detail {
+    width: 300px;
+  }
 }
 
 /* Setting background photo for each person */
 .personal-info-card--Pham .personal-info-card__border {
-	background-image: url("images/Pham.JPG");
+  background-image: url("images/Pham.JPG");
 }
 .personal-info-card--Minh .personal-info-card__border {
-	background-image: url("images/Minh.JPG");
+  background-image: url("images/Minh.JPG");
 }
 .personal-info-card--Jean .personal-info-card__border {
-	background-image: url("images/Jean.JPG");
+  background-image: url("images/Jean.JPG");
 }
 .personal-info-card--Indigo .personal-info-card__border {
-	background-image: url("images/Indigo.JPG");
+  background-image: url("images/Indigo.JPG");
 }
 .personal-info-card--Burhan .personal-info-card__border {
-	background-image: url("images/Burhan.jpg");
+  background-image: url("images/Burhan.jpg");
 }
 
 .personal-info-card figcaption,
 .personal-info-card__role,
 .personal-info-card__detail {
-	opacity: 0;
-	transition: ease-in-out 300ms transform;
+  opacity: 0;
+  transition: ease-in-out 300ms transform;
 }
 
 .personal-info-card:hover .personal-info-card__border {
-	background-position: left;
-	background-size: 450px;
+  background-position: left;
+  background-size: 450px;
 }
 
-.personal-info-card:has(input[name="personal-info-card__label"]:checked) .personal-info-card__border::before,
+.personal-info-card:has(input[name="personal-info-card__label"]:checked)
+  .personal-info-card__border::before,
 .personal-info-card:hover .personal-info-card__border::before {
-	border-color: white;
+  border-color: white;
 }
 
 /* make radio button disappear */
 input[name="personal-info-card__label"] {
-	display: none;
+  display: none;
 }
 
 .personal-info-card:hover figcaption,
 .personal-info-card:hover .personal-info-card__role,
-.personal-info-card:has(input[name="personal-info-card__label"]:checked) figcaption,
-.personal-info-card:has(input[name="personal-info-card__label"]:checked) .personal-info-card__role,
-.personal-info-card:has(input[name="personal-info-card__label"]:checked) .personal-info-card__detail {
-	opacity: 1;
+.personal-info-card:has(input[name="personal-info-card__label"]:checked)
+  figcaption,
+.personal-info-card:has(input[name="personal-info-card__label"]:checked)
+  .personal-info-card__role,
+.personal-info-card:has(input[name="personal-info-card__label"]:checked)
+  .personal-info-card__detail {
+  opacity: 1;
 }
 
 .personal-info-card:has(input[name="personal-info-card__label"]:checked) {
-	grid-column-start: 1;
-	grid-column-end: span 5;
-	grid-row-start: 1;
+  grid-column-start: 1;
+  grid-column-end: span 5;
+  grid-row-start: 1;
 }
 
-.personal-info-card:has(input[name="personal-info-card__label"]:checked) .personal-info-card__detail {
-	/* Move out of the card (width 270px)
+.personal-info-card:has(input[name="personal-info-card__label"]:checked)
+  .personal-info-card__detail {
+  /* Move out of the card (width 270px)
 	 * with margin 30px */
-	transform: translateX(300px);
+  transform: translateX(30px);
 }
 
 @media only screen and (max-width: 600px) {
-.personal-info-card:has(input[name="personal-info-card__label"]:checked) {
-	height: 650px;
-}
-.personal-info-card:has(input[name="personal-info-card__label"]:checked) .personal-info-card__detail {
-	/* Move out of the card (width 270px)
-	 * with margin 5px */
-	transform: translateX(0) translateY(330px);
-}
+  .personal-info-card:has(input[name="personal-info-card__label"]:checked) {
+    height: 650px;
+  }
+  .personal-info-card:has(input[name="personal-info-card__label"]:checked)
+    .personal-info-card__detail {
+		left: 0;
+		top: 300px;
+    /* Move out of the card (height 360px) */
+    transform: translateX(0) translateY(30px);
+	}
 }
 
 .timetable__container {
-	/* show the border of the table */
-	padding: 1px;
-	overflow-x: auto;
+  /* show the border of the table */
+  padding: 1px;
+  overflow-x: auto;
 }
 
 .timetable__container table {
-	width: 50%;
+  width: 50%;
 }
 
 /*******
@@ -904,16 +926,15 @@ input[name="personal-info-card__label"] {
 * input only half size and in the same
 * line as other input */
 #form__apply {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	justify-content: center;
-	grid-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  grid-gap: 10px;
 }
 
 #form__apply h1 {
-	text-align: center;
+  text-align: center;
 }
-
 
 /* Making some input fullsize */
 #form__apply button,
@@ -922,19 +943,144 @@ input[name="personal-info-card__label"] {
 #street-address__container,
 #surburb-town__container,
 #job-reference-number__container {
-	grid-column-start: 1;
-	grid-column-end: span 2;
-	width: 100%;
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  width: 100%;
 }
 
 /* Other skill textarea only pop up if 
 * chosen */
 #skill-others__textarea {
-	margin-top: 1em;
-	display: none;
-	resize: none;
+  margin-top: 1em;
+  display: none;
+  resize: none;
 }
 
 #skill-others:checked ~ #skill-others__textarea {
-	display: block;
+  display: block;
+}
+
+/* Jobs Page */
+
+.job {
+  position: relative;
+  background: var(--bg);
+  box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.2s ease;
+  display: grid;
+  grid: repeat(6, auto) / repeat(3, auto);
+	padding: 1.5em 2em;
+	font-size: .8em;
+	width: 100%;
+}
+
+.job .btn {
+  grid-column: 3;
+  grid-row: 6;
+}
+
+.job_overview {
+  grid-column: 1/3;
+  grid-row: 1/3;
+}
+
+.job_details {
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto;
+  width: 100%;
+  grid-row: 4/5;
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.job_details--container {
+	display: inline-flex;
+	background: var(--accent-lighter);
+	border-radius: 0.25rem;
+	align-items: center;
+	justify-content: center;
+	font-size: .8rem !important;
+	color: var(--accent-darker);
+	padding: 0.1875rem 0.5rem;
+	margin-right: 0.25rem;
+	margin-bottom: 0.25rem;
+}
+
+.job_details--container p {
+	margin-bottom: 0;
+}
+
+.job_details--title {
+  text-transform: uppercase;
+	display: flex;
+	align-items:center;
+}
+
+img.icon {
+  color: darkgrey;
+  vertical-align: middle;
+  width: .8rem;
+  height: .8rem;
+}
+
+.job_reference_number {
+  grid-column: 1;
+  grid-row: 6;
+}
+
+.job_referece_number p {
+  font-size: .9em;
+  color: darkgray;
+}
+
+.job + aside {
+	width: 100%;
+	max-height: 0;
+	opacity: 0;
+	padding: 1em;
+  background: var(--bg);
+  box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
+  border-radius: 10px;
+	transition: ease-in-out 600ms all;
+}
+
+.job + aside ol {
+	margin-left: 3em;
+}
+
+.job:hover + aside {
+	max-height: 500px;
+	opacity: 1;
+	margin: 1em 0;
+}
+
+/* Specific Job Roles Page */
+.job--responsibilities,
+.job--skills {
+	display: inline-block;
+	width: 60%;
+}
+
+.job--benefits {
+  float: right;
+  width: 25%;
+  border: 2px dotted var(--accent);
+  border-radius: 10px;
+  padding: 0 0.8em;
+	font-size: .8em;
+}
+
+@media only screen and (max-width: 600px) {
+	.job--responsibilities,
+	.job--skills {
+		width: 100%;
+	}
+	.job--benefits {
+		width: 100%;
+		border: none;
+		float: clear;
+		font-size: 1em;
+	}
 }
