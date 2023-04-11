@@ -5,73 +5,58 @@
         <meta name="description" content="Position Decriptions Page"/>
         <meta name="keywords" content="HTML, CSS, Job Description, Java Developer"/>
         <meta name="author" content="Khai Wen Lee"/>
-        <title>Job Description</title>
+        <title>Job Positions</title>
         <!--Reference for CSS Stylesheet-->
         <link href="styles/style.css" rel="stylesheet"/>
     </head>
     <body>
-        <section>
-            <h1>Java Developer</h1>
-            <p id="ref">Reference Number: QWE12</p>
-            <!--Need to use CSS to align the text at the middle, set the size/color of the img-->
-            <p><img class="job" src="images/location_icon.png"/> Melbourne, VIC 3000</p>
-        
-            <section>
-                <h2>Job Overview</h2>
-                <p>The position is anchored in <em>JAVASTORM Digital Product Department</em>, responsible for delivering the best value in software applications for our internal and external clients. 
-                    As a Java Developer, you will be responsible for designing, developing, testing, and maintaining Java-based applications according to the agreed enterprise architecture. 
-                    You will work closely with a team of developers and project managers to deliver high-quality software as solutions to business problems in partnership with external Product owners. 
-                    You will also be responsible for troubleshooting and debugging issues, as well as staying up-to-date with emerging trends and technologies in Java development. 
+        <section class="job">
+            <section class="job_overview">
+                <h1>Java Developer</h1>
+                <h2>JavaStorm</h2>
+                <p class="job_location"><img class="icon" src="images/location_icon.png"/> Melbourne, VIC 3000</p>
+                <p class="job_overview_info">Anchored in <em>JavaStorm Digital Product Department</em>, responsible for delivering the best value in software applications for our internal and external clients.</p>
+            </section>
+            
+            <section class="job_details">
+                <p class="job_details_title"><img class="icon" src="images/salary_icon.png"/> Salary</p>
+                <p class="job_details_info">$70, 000 - $85, 000 a year</p>
+            </section>
+
+            <section class="job_details">
+                <p class="job_details_title"><img class="icon" src="images/jobtype_icon.png"/> Job Type</p>
+                <p class="job_details_info">Full-Time, Contract</p>
+            </section>
+
+            <section class="job_details">
+                <p class="job_details_title"><img class="icon" src="images/shift_icon.png"/> Shift and Schedule</p>
+                <p class="job_details_info">8 hour shift from Monday to Friday</p>
+            </section>
+
+            <aside>
+                <p>
+                    <strong>What&#39ss on Offer: </strong> 
                 </p>
-                <p>With most large organizations using Java to implement software systems and backend services, a Java developer is one of the most sought-after jobs today. </p>
-                <!--References: https://www.simplilearn.com/java-developer-job-description-article-->
-                <p>The Java Developer reports to <strong>Development Team Leader</strong> and serves in the specialist team.</p>
-            </section>
-
-            <section>
-                <h2>Job Details</h2>
-                <p><img class="job" src="images/salary_icon.png"/> Salary</p>
-                <p id="salary">$70, 000 - $85, 000 a year</p>
-                <p><img class="job" src="images/jobtype_icon.png"/> Job Type</p>
-                <p id="jtype">Full-Time, Contract</p>
-                <p><img class="job" src="images/shift_icon.png"/> Shift and Schedule</p>
-                <p id="shift">Monday to Friday</p>
-            </section>
-        
-            <section>
-                <h2>Key Responsibilities</h2>
-                <ul>
-                    <li>Working with business and technology stakeholders to understand and analyse requirements for new features and how they will impact the existing application.</li>
-                    <li>Develop flowcharts, layouts and documentation to identify requirements and solutions.</li>
-                    <li>Design and implement Java applications with well-written code that runs efficiently and optimally.</li>
-                    <li>Contribute to software verifications plans and quality assurance procedures.</li>
-                    <li>Comply with project plans, industry standards and regulatory requirements.</li>
-                    <li>Knowledge sharing and conduct code reviews of other team members.</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>Skills and Qualifications</h2>
                 <ol>
-                    <li>Essential
-                        <ul>
-                            <li>Advanced skills in Java 11 or later, Spring Boot, Gradle, Docker</li>
-                        </ul>
-                    </li>
-                    <li>Preferable</li>
+                    <li>Opportunity to work with the biggest players in the industry</li>
+                    <li>Stable and productive environment with exposure towards the latest technologies</li>
                 </ol>
+            </aside>
+
+            <section class="job_reference_number">
+                <p id="ref">Reference Number: QWE12</p>
             </section>
 
-            <section>
-                <h2>Benefits</h2>
-                <p></p>
+            <section class="job_cta">
+                <button class="button" type="button" value="Show More">
+                    <a href="jobs_java_developer.html">Show More</a></button>
             </section>
         </section>
 
         <hr/>
 
         <footer>
-
+            <p>COS10026 - </p>
         </footer>
     </body>
 </html>
