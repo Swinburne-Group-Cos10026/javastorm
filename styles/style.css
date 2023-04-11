@@ -1046,10 +1046,6 @@ img.icon {
 	transition: ease-in-out 600ms all;
 }
 
-.job + aside ol {
-	margin-left: 3em;
-}
-
 .job:hover + aside {
 	max-height: 500px;
 	opacity: 1;
