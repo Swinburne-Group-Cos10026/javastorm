@@ -116,14 +116,14 @@ h4,
 h5 {
   font-family: var(--font-heading);
   /* space after headers */
-  margin: 0.5rem 0;
+  margin: 1.5rem 0;
 }
 
 h1 {
   /* the requirement askes me to have short-hand font for h1 */
   font: bold 4em var(--font-heading);
   letter-spacing: 0.5px;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
 }
 
 h2 {
