@@ -592,7 +592,7 @@ header {
 }
 
 #header__home::before {
-  background-image: url("images/banner__about.jpg");
+  background-image: url("images/banner__home.jpg");
   filter: brightness(50%);
 }
 
