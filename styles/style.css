@@ -568,12 +568,14 @@ header {
   background: var(--accent-darker);
 }
 
+#header__home,
 #header__jobs,
 #header__about {
   background: none;
   height: 100vh;
 }
 
+#header__home::before,
 #header__about::before,
 #header__jobs::before {
   content: "";
@@ -586,6 +588,11 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   z-index: -1;
+}
+
+#header__home::before {
+  background-image: url("images/banner__about.jpg");
+  filter: brightness(50%);
 }
 
 #header__about::before {
@@ -768,6 +775,7 @@ nav a:nth-child(5):hover ~ #indicator {
 * ******/
 
 footer {
+	margin-top: 3em;
   background-color: var(--accent-darker);
   padding: 1em;
 }
@@ -835,6 +843,144 @@ footer {
 }
 
 /*******
+* Home Page
+********/
+
+/* Quality and Standard */
+.quality-boxes,
+.standards-boxes {
+	margin: auto;
+	border-top: 1px solid var(--accent-darker);
+	border-bottom: 1px solid var(--accent-darker);
+}
+
+.quality-box,
+.standard-box {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.quality-box img,
+.standard-box img {
+	width: 100%;
+}
+
+.quality-box__content,
+.standard-box__content {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 1em;
+}
+
+.quality-box:nth-child(even) .quality-box__content,
+.quality-box:nth-child(odd) img,
+.standard-box:nth-child(even) .standard-box__content,
+.standard-box:nth-child(odd) img {
+	grid-column-start: 2;
+	grid-row-start: 1;
+}
+
+.quality-box:nth-child(odd) .quality-box__content,
+.quality-box:nth-child(even) img,
+.standard-box:nth-child(odd) .standard-box__content,
+.standard-box:nth-child(even) img {
+	grid-column-start: 1;
+	grid-row-start: 1;
+}
+
+/* Events */
+
+.events {
+	overflow-x: scroll;
+	overflow-y: hidden;
+	height: 450;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	margin-bottom: 1em;
+	width: 100%;
+}
+
+.event {
+	width: 300px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 1em;
+}
+
+.event img {
+	width: 300px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	transition: .1s ease-in-out filter;
+}
+
+.event__detail {
+	opacity: 0;
+	color: var(--accent-lighter);
+	z-index: 10;
+	transition: .3s ease-in-out opacity;
+	font-size: .8em;
+}
+
+.event:hover .event__detail {
+	opacity: 1;
+}
+
+.event:hover img {
+	filter: brightness(20%);
+}
+
+/* Previous Project */
+
+.projects {
+	display: grid;
+	overflow-x: scroll;
+	grid-template-rows: repeat(auto, 1fr);
+	width: 100%;
+}
+
+.project {
+	width: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+	color: var(--bg);
+	grid-row-start: 1;
+	margin: 0 1em;
+	padding: 1em;
+  text-shadow: 1px 1px 2px var(--accent-darker);
+}
+
+#project--ctech {
+	background-image: url("images/cTech.jpg");
+}
+
+#project--os {
+	background-image: url("images/operate_system.jpg");
+}
+
+#project--apple {
+	background-image: url("images/apple.jpg");
+}
+
+#project--intel {
+	background-image: url("images/intel.jpg");
+}
+
+#project--samsung {
+	background-image: url("images/samsung.jpg");
+}
+
+#project--telecom {
+	background-image: url("images/telecom.jpg");
+}
+
+/*******
 * About Page
 ********/
 
@@ -895,9 +1041,7 @@ footer {
 .personal-info-card figcaption,
 .personal-info-card .personal-info-card__role {
   color: white;
-  /* color: color(--accent); */
   text-shadow: 1px 1px 2px var(--accent-darker);
-  /* text-shadow: 1px 1px 2px white; */
 }
 
 /* contain the image */
