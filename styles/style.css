@@ -43,6 +43,7 @@
   color-scheme: light;
   /* default colour for default ui elements */
   --accent: #5382a1;
+  --accent2: #f89820;
   --accent-lighter: #90bad6;
   --accent-darker: #17252e;
   --bg: aliceblue;
@@ -58,7 +59,7 @@ body {
 }
 
 main {
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   padding: 0 10%;
 }
 
@@ -404,13 +405,13 @@ input[type="radio"].radio + label:after {
 
 ul,
 ol {
-	margin-block-start: var(--stack);
+  margin-block-start: var(--stack);
 }
 
 /* make list character start at the normal
 * position like other texts */
 li {
-	margin-inline-start: 2ch;
+  margin-inline-start: 2ch;
 }
 
 dl {
@@ -561,25 +562,60 @@ a.link:focus {
 * Nav Bar *
 ***********/
 header {
-  background-color: var(--accent-darker);
+  width: 100vw;
+  margin-bottom: 3em;
+  height: 80px;
+  background: var(--accent-darker);
+}
+
+#header__jobs,
+#header__about {
+  background: none;
+  height: 100vh;
+}
+
+#header__about::before,
+#header__jobs::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+}
+
+#header__about::before {
+  background-image: url("images/banner__about.jpg");
+  filter: brightness(50%);
+}
+
+#header__jobs::before {
+  background-image: url("images/banner__jobs.jpg");
+  filter: brightness(50%);
+}
+
+#navbar {
   box-shadow: rgba(216, 222, 233, 0.15) 0px 5px 10px 0px;
   width: 100%;
   height: 80px;
-  padding: 0.6em var(--paragraph-indent);
-  margin-bottom: 0.5em;
+  padding: 0.6em 10%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   color: var(--bg);
-}
-
-header + img {
-  width: 600px;
+  position: relative;
 }
 
 nav {
   position: absolute;
-  right: 0;
+  right: 4rem;
   display: table;
+  width: 800px;
+  height: 1rem;
 }
 
 nav a {
@@ -681,8 +717,9 @@ nav a:nth-child(5).nav-link__current ~ #indicator {
   left: 80%;
 }
 
-nav a:hover {
-  color: var(--accent);
+#navbar nav a:hover,
+#navbar #logo:hover {
+  color: var(--accent2);
 }
 
 nav a:hover:before,
@@ -713,6 +750,88 @@ nav a:nth-child(4):hover ~ #indicator {
 nav a:nth-child(5):hover ~ #indicator {
   left: 80%;
   background: linear-gradient(130deg, royalblue, aliceblue);
+}
+
+#banner {
+  height: calc(100vh - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  color: var(--bg);
+  text-shadow: 1px 1px 2px var(--accent-darker);
+  text-align: center;
+}
+
+/*******
+* Footer
+* ******/
+
+footer {
+  background-color: var(--accent-darker);
+  padding: 1em;
+}
+
+.site-footer {
+  padding: 45px 0 20px;
+  font-size: 15px;
+  line-height: 24px;
+  color: #737373;
+  display: flex;
+  padding: 4rem;
+  justify-content: space-between;
+}
+
+.site-footer a {
+  color: #737373;
+}
+
+.site-footer a:hover {
+  color: #3366cc;
+  text-decoration: none;
+}
+
+.footer-links {
+  padding: 0;
+  list-style: none;
+  margin-right: 2px;
+}
+
+.footer-links li {
+  display: block;
+}
+
+.footer-links a {
+  color: #737373;
+}
+
+.footer-links a:active,
+.footer-links a:focus,
+.footer-links a:hover {
+  color: var(--accent-lighter);
+  text-decoration: none;
+}
+
+.footer-links.inline li {
+  display: inline-block;
+}
+
+.copyright-text {
+  text-align: center;
+  font-size: 0.8em;
+  margin-bottom: 0;
+  color: var(--bg);
+}
+
+@media only screen and (max-width: 600px) {
+  .site-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .site-footer li {
+    display: inline-block;
+  }
 }
 
 /*******
@@ -901,11 +1020,11 @@ input[name="personal-info-card__label"] {
   }
   .personal-info-card:has(input[name="personal-info-card__label"]:checked)
     .personal-info-card__detail {
-		left: 0;
-		top: 300px;
+    left: 0;
+    top: 300px;
     /* Move out of the card (height 360px) */
     transform: translateX(0) translateY(30px);
-	}
+  }
 }
 
 .timetable__container {
@@ -970,15 +1089,17 @@ input[name="personal-info-card__label"] {
   overflow: hidden;
   transition: 0.2s ease;
   display: grid;
-  grid: repeat(6, auto) / repeat(3, auto);
-	padding: 1.5em 2em;
-	font-size: .8em;
-	width: 100%;
+  grid-template-rows: repeat(6, auto);
+  grid-template-columns: 4fr 1fr;
+  padding: 1.5em 2em;
+  font-size: 0.8em;
+  width: 100%;
 }
 
 .job .btn {
-  grid-column: 3;
+  grid-column: 4;
   grid-row: 6;
+  justify-content: right;
 }
 
 .job_overview {
@@ -991,38 +1112,38 @@ input[name="personal-info-card__label"] {
   grid-template-rows: auto auto;
   width: 100%;
   grid-row: 4/5;
-	display: flex;
-	flex-flow: row wrap;
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .job_details--container {
-	display: inline-flex;
-	background: var(--accent-lighter);
-	border-radius: 0.25rem;
-	align-items: center;
-	justify-content: center;
-	font-size: .8rem !important;
-	color: var(--accent-darker);
-	padding: 0.1875rem 0.5rem;
-	margin-right: 0.25rem;
-	margin-bottom: 0.25rem;
+  display: inline-flex;
+  background: var(--accent-lighter);
+  border-radius: 0.25rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem !important;
+  color: var(--accent-darker);
+  padding: 0.1875rem 0.5rem;
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 .job_details--container p {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .job_details--title {
   text-transform: uppercase;
-	display: flex;
-	align-items:center;
+  display: flex;
+  align-items: center;
 }
 
 img.icon {
-  color: darkgrey;
+  color: var(--accent-darker);
   vertical-align: middle;
-  width: .8rem;
-  height: .8rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 .job_reference_number {
@@ -1031,32 +1152,36 @@ img.icon {
 }
 
 .job_referece_number p {
-  font-size: .9em;
+  font-size: 0.9em;
   color: darkgray;
 }
 
 .job + aside {
-	width: 100%;
-	max-height: 0;
-	opacity: 0;
-	padding: 1em;
+  width: 100%;
+  max-height: 0;
+  opacity: 0;
+  padding: 1em;
   background: var(--bg);
   box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
   border-radius: 10px;
-	transition: ease-in-out 600ms all;
+  transition: ease-in-out 600ms all;
 }
 
 .job:hover + aside {
-	max-height: 500px;
-	opacity: 1;
-	margin: 1em 0;
+  max-height: 500px;
+  opacity: 1;
+  margin: 1em 0;
 }
 
 /* Specific Job Roles Page */
+.job--description .btn {
+  text-align: center;
+}
+
 .job--responsibilities,
 .job--skills {
-	display: inline-block;
-	width: 60%;
+  display: inline-block;
+  width: 60%;
 }
 
 .job--benefits {
@@ -1065,18 +1190,18 @@ img.icon {
   border: 2px dotted var(--accent);
   border-radius: 10px;
   padding: 0 0.8em;
-	font-size: .8em;
+  font-size: 0.8em;
 }
 
 @media only screen and (max-width: 600px) {
-	.job--responsibilities,
-	.job--skills {
-		width: 100%;
-	}
-	.job--benefits {
-		width: 100%;
-		border: none;
-		float: clear;
-		font-size: 1em;
-	}
+  .job--responsibilities,
+  .job--skills {
+    width: 100%;
+  }
+  .job--benefits {
+    width: 100%;
+    border: none;
+    float: clear;
+    font-size: 1em;
+  }
 }

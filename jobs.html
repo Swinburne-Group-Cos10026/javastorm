@@ -6,17 +6,36 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Position Decriptions Page" />
 	<meta name="keywords" content="HTML, CSS, Job Description, Java Developer" />
-	<meta name="author" content="Khai Wen Lee" />
+	<meta name="author" content="Khai Wen Lee, Le Minh Vu" />
 	<title>Job Description</title>
 	<!--Reference for CSS Stylesheet-->
 	<link href="styles/style.css" rel="stylesheet" />
 </head>
 
 <body>
+	<header id="header__jobs">
+		<div id="navbar">
+			<h3 id="logo"><a href="index.html">JavaStorm</a></h3>
+			<nav>
+				<a href="index.html">Home</a>
+				<a href="about.html">About us</a>
+				<a class="nav-link__current" href="jobs.html">Jobs</a>
+				<a href="apply.html">Apply</a>
+				<a href="ehancements.html">Enhancements</a>
+				<div id="indicator"></div>
+			</nav>
+		</div>
+		<div id="banner">
+			<section id="jointeam">
+				<h1>JOIN OUR TEAM!!!</h1><br>
+				<p> Head over to jobs <br> to apply.<br><a href="apply.html" class="link">Apply now!!</a></p>
+			</section>
+		</div>
+	</header>
 	<main>
 		<section class="job">
 			<section class="job_overview">
-				<h4>Java Developer </h4>
+				<h4>Java Developer</h4>
 				<p class="job_location"><img class="icon" src="images/location_icon.png" />Melbourne, VIC 3000</p>
 				<p class="job_overview_info">Anchored in <em>JAVASTORM Digital Product Department</em>, responsible for
 					delivering
@@ -57,17 +76,16 @@
 
 		<section class="job">
 			<section class="job_overview">
-				<h4>Java Developer </h4>
-				<p class="job_location"><img class="icon" src="images/location_icon.png" />Melbourne, VIC 3000</p>
-				<p class="job_overview_info">Anchored in <em>JAVASTORM Digital Product Department</em>, responsible for
-					delivering
-					the best value in software applications for our internal and external clients.</p>
+				<h4>Security Analyst</h4>
+				<p class="job_location"><img class="icon" src="images/location_icon.png" /> Melbourne, VIC 3000</p>
+				<p class="job_overview_info">Part of the <em>JavaStorm Digital Security Department</em> and specializes in
+					software solution security initiatives across the group.</p>
 			</section>
 
 			<section class="job_details">
 				<div class="job_details--container">
 					<p class="job_details--title"><img class="icon" src="images/salary_icon.png" /></p>
-					<p class="job_details--info">: $70,000 - $85,000</p>
+					<p class="job_details--info">: $130,000 - $145,000</p>
 				</div>
 
 				<div class="job_details--container">
@@ -77,30 +95,70 @@
 
 				<div class="job_details--container">
 					<p class="job_details--title"><img class="icon" src="images/shift_icon.png" /></p>
-					<p class="job_details--info">: 8h Mon to Fri</p>
+					<p class="job_details--info">: Flexible - Mon to Fri</p>
 				</div>
 			</section>
+
 			<section class="job_reference_number">
-				<p>Reference Number: QWE12</p>
+				<p id="ref">Reference Number: DEF67</p>
 			</section>
-			<a class="btn" href="jobs/java_developer.html">Show More</a>
+
+			<a class="btn" href="jobs/security_analyst.html">Show More</a>
 		</section>
 
 		<aside>
 			<p>
-				<strong>What's on Offer: </strong>
+				<strong>What&#39ss on Offer: </strong>
 			</p>
 			<ol>
 				<li>Opportunity to work with the biggest players in the industry</li>
-				<li>Stable and productive environment with exposure towards the latest technologies</li>
+				<li>Career advancement opportunities within the organization</li>
+				<li>Supportive work environment with a focus on employee well-being</li>
 			</ol>
 		</aside>
 	</main>
 
-	<hr />
-
 	<footer>
-		<p>COS10026 - </p>
+		<div class="site-footer">
+			<div>
+				<h5>About</h5>
+				<p class="aboutus">
+					We are a group of 5 students studying in Swinburne university of technology who are making<br>
+					this website for our assigned company called JavaStorm. JavaStorm focuses on providing the <br>
+					most efficient code or snippets as the code wants to be simple.<i> Simple yet unique.</i> <br>
+					We help our customers build up concepts in different programming languages that include<br>
+					C, C++, HTML, CSS, Bootstrap, but mainly, Java.
+				</p>
+			</div>
+			<div>
+				<h5>Contact us</h5>
+				<ul class="Contact us">
+					<li>+61 401 508 993</li>
+					<li>+61 401 508 982</li>
+					<li>fakeemailcos10026@javastorm.co.au</li>
+					<li>Swinburne University, Hawthorn, VIC.</li>
+				</ul>
+			</div>
+			<div>
+				<h5>Quick Links</h5>
+				<ul class="footer-links">
+					<li><a href="../about.html">About Us</a></li>
+					<li><a href="../apply.html">Apply</a></li>
+					<li><a href="../jobs.html">Jobs</a></li>
+					<li>
+						<a
+							href="https://www.google.com/maps/place/Swinburne+University+of+Technology/@-37.8221504,145.0367659,17z/data=!3m1!4b1!4m6!3m5!1s0x6ad642326bae5aaf:0x75e96bbd4988f769!8m2!3d-37.8221504!4d145.0389546!16zL20vMDFrcV9z">
+							Find Us
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<br>
+		<p class="copyright-text"> Copyright &copy; 2017 All Rights Reserved by JavaStorm
+		</p>
+
 	</footer>
 </body>
 
