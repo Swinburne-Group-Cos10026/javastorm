@@ -66,6 +66,7 @@ main {
 @media only screen and (max-width: 600px) {
   main {
     padding: 0 var(--paragraph-indent);
+		text-align: justify;
   }
 }
 
@@ -562,7 +563,7 @@ a.link:focus {
 * Nav Bar *
 ***********/
 header {
-  width: 100vw;
+  width: 100%;
   margin-bottom: 3em;
   height: 80px;
   background: var(--accent-darker);
@@ -774,27 +775,27 @@ nav a:nth-child(5):hover ~ #indicator {
 /* For tablet and phone */
 #menu--checker__label {
   display: none;
+	overflow: hidden;
 }
 
 #menu--checker__label .menu {
   position: absolute;
-  right: -80px;
-  top: -80px;
+  right: 0px;
+  top: 0px;
+  width: 80px;
+  height: 80px;
   z-index: 100;
-  width: 160px;
-  height: 160px;
   transition: 0.5s ease-in-out;
   box-shadow: 0 0 0 0 var(--bg), 0 0 0 0 var(--bg);
   cursor: pointer;
-  border-radius: 50%;
+	border-bottom-left-radius: 100%;
   background: var(--bg);
-	overflow: hidden;
 }
 
 #menu--checker__label .hamburger {
   position: absolute;
-  top: 115px;
-  left: 40px;
+  top: 33px;
+  right: 20px;
   width: 30px;
   height: 2px;
   background: var(--accent-lighter);
@@ -866,7 +867,9 @@ nav a:nth-child(5):hover ~ #indicator {
     color: var(--accent-darker);
     display: flex;
     flex-direction: column;
+    z-index: 0;
     z-index: 101;
+		pointer-events: none;
   }
 
   #indicator {
@@ -932,6 +935,7 @@ nav a:nth-child(5):hover ~ #indicator {
 
   #menu--checker:checked + #menu--checker__label + nav {
     opacity: 1;
+		pointer-events: visible;
   }
 }
 
@@ -1028,6 +1032,9 @@ footer {
 .quality-box img,
 .standard-box img {
   width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: 10% 20%;
 }
 
 .quality-box__content,
@@ -1159,7 +1166,9 @@ footer {
 }
 
 .group-info__figure img {
-  height: 400px;
+  /* height: 400px; */
+	width: 100%;
+	max-width: 420px;
   border: 2px dotted black;
   border-radius: 10px;
 }
@@ -1168,17 +1177,9 @@ footer {
 .team-members__container {
   float: clear;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+	justify-content: space-around;
   gap: 10px;
-}
-
-@media only screen and (max-width: 600px) {
-  .team-members__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    grid-template-columns: repeat(1, 1fr);
-  }
 }
 
 .personal-info-card {
@@ -1219,7 +1220,7 @@ footer {
   background-size: 300px;
   background-repeat: no-repeat;
   background-position: center;
-  transition: ease-in-out 600ms background;
+  transition: .6s ease-in-out background;
   z-index: 10;
 }
 
@@ -1241,7 +1242,8 @@ footer {
 
 .personal-info-card__detail {
   position: absolute;
-  width: 600px;
+	max-width: 0px;
+	width: 600px;
   height: 350px;
   top: 0;
   left: 270px;
@@ -1254,8 +1256,11 @@ footer {
 }
 
 @media only screen and (max-width: 600px) {
-  .personal-info-card__detail {
-    width: 300px;
+  .team-members__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -1280,7 +1285,7 @@ footer {
 .personal-info-card__role,
 .personal-info-card__detail {
   opacity: 0;
-  transition: ease-in-out 300ms transform;
+  transition: .3s ease-in-out transform;
 }
 
 .personal-info-card:hover .personal-info-card__border {
@@ -1315,8 +1320,7 @@ input[name="personal-info-card__label"]:checked
 }
 
 input[name="personal-info-card__label"]:checked + .personal-info-card {
-  grid-column-start: 1;
-  grid-column-end: span 5;
+	grid-column: 1 / -1;
   grid-row-start: 1;
 }
 
@@ -1326,11 +1330,12 @@ input[name="personal-info-card__label"]:checked
   /* Move out of the card (width 270px)
 	 * with margin 30px */
   transform: translateX(30px);
+  max-width: 600px;
 }
 
 @media only screen and (max-width: 600px) {
   input[name="personal-info-card__label"]:checked + .personal-info-card {
-    height: 650px;
+    height: 700px;
   }
 
   input[name="personal-info-card__label"]:checked
@@ -1341,6 +1346,19 @@ input[name="personal-info-card__label"]:checked
     /* Move out of the card (height 360px) */
     transform: translateX(0) translateY(30px);
   }
+
+  .personal-info-card__detail {
+		height: 400px;
+    width: 270px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+input[name="personal-info-card__label"]:checked
+  + .personal-info-card
+  .personal-info-card__detail {
+  max-width: 400px;
+}
 }
 
 .timetable__container {
