@@ -788,6 +788,7 @@ nav a:nth-child(5):hover ~ #indicator {
   cursor: pointer;
   border-radius: 50%;
   background: var(--bg);
+	overflow: hidden;
 }
 
 #menu--checker__label .hamburger {
