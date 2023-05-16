@@ -14,7 +14,7 @@
 
 <body>
 	<header id="header__jobs">
-		<div id="navbar">
+		<div id="navbar"> 
 		<?php include "./common/header.inc" ?>
 			<nav>
 				<a href="index.php">Home</a>
