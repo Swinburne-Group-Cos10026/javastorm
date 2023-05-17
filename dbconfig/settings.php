@@ -1,6 +1,5 @@
 <?php
-define("HOST", "localhost:3307");
-define("DATABASE", "assignmentjavastorm");
+define("HOST", "localhost");
+define("DATABASE", "eoi");
 define("USERNAME", "root");
 define("PASSWORD", "Mo!ConCho2003");
-?>
