@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta n	ame="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Assignment 1 index">
 	<meta name="keywords" content="navigation bar, index">
 	<meta name="author" content="Burhanuddin kapasi">
