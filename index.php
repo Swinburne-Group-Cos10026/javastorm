@@ -23,12 +23,10 @@
 				navbar("Home");
 			?>
 		</div>
-		<div id="banner">
-			<section id="jointeam">
-				<h1>Javastorm</h1><br>
-				<p>Make all your dream<br> come true.<br><a href="about.html" class="link">Join us now!!</a></p>
-			</section>
-		</div>
+		<?php 
+				include("./common/banner.php");
+				banner("Home");
+			?>
 	</header>
 	<main>
 		<div class="sec-intro">

@@ -20,12 +20,10 @@
 				navbar("About us");
 			?>
 		</div>
-		<div id="banner">
-			<section id="jointeam">
-				<h1>WHO ARE WE!!</h1><br>
-				<p>A bit about<br>outselves.<br></p>
-			</section>
-		</div>
+		<?php 
+				include("./common/banner.php");
+				banner("About us");
+			?>
 	</header>
 
 	<main>

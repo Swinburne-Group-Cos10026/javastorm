@@ -21,12 +21,10 @@
 				navbar("Jobs");
 			?>
 		</div>
-		<div id="banner">
-			<section id="jointeam">
-				<h1>JOIN OUR TEAM!!!</h1><br>
-				<p> Head over to jobs <br> to apply.<br><a href="apply.html" class="link">Apply now!!</a></p>
-			</section>
-		</div>
+		<?php 
+				include("./common/banner.php");
+				banner("Jobs");
+			?>
 	</header>
 	<main>
 		<div class="job">
