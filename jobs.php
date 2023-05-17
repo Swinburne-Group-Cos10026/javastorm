@@ -16,14 +16,10 @@
 	<header id="header__jobs">
 		<div id="navbar"> 
 		<?php include "./common/header.inc" ?>
-			<nav>
-				<a href="index.php">Home</a>
-				<a href="about.php">About us</a>
-				<a class="nav-link__current" href="jobs.php">Jobs</a>
-				<a href="apply.php">Apply</a>
-				<a href="enhancements.php">Enhancements</a>
-				<div id="indicator"></div>
-			</nav>
+		<?php 
+				include("./common/menu.php");
+				navbar("Jobs");
+			?>
 		</div>
 		<div id="banner">
 			<section id="jointeam">

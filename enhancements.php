@@ -14,14 +14,10 @@
 	<header id="header__apply">
 		<div id="navbar">
 			<?php include "./common/header.inc" ?>
-			<nav>
-				<a href="index.php">Home</a>
-				<a href="about.php">About us</a>
-				<a href="jobs.php">Jobs</a>
-				<a href="apply.php">Apply</a>
-				<a class="nav-link__current" href="enhancements.php">Enhancements</a>
-				<div id="indicator"></div>
-			</nav>
+			<?php 
+				include("./common/menu.php");
+				navbar("Enhancements");
+			?>
 		</div>
 	</header>
 	<main>

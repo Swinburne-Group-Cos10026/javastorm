@@ -14,18 +14,14 @@
 	</style>
 </head>
 
-<body>
+<body>	
 	<header id="header__home">
 		<div id="navbar">
-		<?php include "./common/header.inc" ?>
-			<nav>
-				<a class="nav-link__current" href="index.php">Home</a>
-				<a href="about.php">About us</a>
-				<a href="jobs.php">Jobs</a>
-				<a href="apply.php">Apply</a>
-				<a href="enhancements.php">Enhancements</a>
-				<div id="indicator"></div>
-			</nav>
+			<?php include "./common/header.inc" ?>
+			<?php 
+				include("./common/menu.php");
+				navbar("Home");
+			?>
 		</div>
 		<div id="banner">
 			<section id="jointeam">
@@ -170,6 +166,7 @@
 		</div>
 	</main>
 	<?php include "./common/footer.inc" ?>
+
 </body>
 
 </html>
