@@ -27,91 +27,58 @@
 			?>
 	</header>
 	<main>
-		<div class="job">
-			<section class="job_overview">
-				<h4>Java Developer</h4>
-				<p class="job_location"><img class="icon" src="images/location_icon.png" alt="location icon">Melbourne, VIC 3000
-				</p>
-				<p class="job_overview_info">Anchored in <em>JAVASTORM Digital Product Department</em>, responsible for
-					delivering
-					the best value in software applications for our internal and external clients.</p>
-			</section>
+		<?php
+			try {
+				require_once("dbconfig/settings.php");
+				$conn = mysqli_connect(
+					$host,
+					$user,
+					$pwd,
+					$sql_db
+				);
 
-			<div class="job_details">
-				<div class="job_details--container">
-					<p class="job_details--title"><img class="icon" src="images/salary_icon.png" alt="salary icon"></p>
-					<p class="job_details--info">: $70,000 - $85,000</p>
-				</div>
+				$query = "SELECT * FROM job;";
+				$result = mysqli_query($conn, $query);
 
-				<div class="job_details--container">
-					<p class="job_details--title"><img class="icon" src="images/jobtype_icon.png" alt="jobtype icon"></p>
-					<p class="job_details--info">: Full-Time, Contract</p>
-				</div>
+				while ($row = mysqli_fetch_assoc($result)) {
+					echo "<div class='job'>";
+					echo "<section class='job_overview'>";
+					echo "<h4>" . $row['position'] . "</h4>";
+					echo "<p class='job_location'><img class='icon' src='images/location_icon.png' alt='location icon'>" . $row['address'] . "</p>";
+					echo "<p class='job_overview_info'>" . $row['short_desc'] . "</p>";
+					echo "</section>";
 
-				<div class="job_details--container">
-					<p class="job_details--title"><img class="icon" src="images/shift_icon.png" alt="shift icon"></p>
-					<p class="job_details--info">: 8h Mon to Fri</p>
-				</div>
-			</div>
-			<div class="job_reference_number">
-				<p>Reference Number: QWE12</p>
-			</div>
-			<a class="btn" href="jobs/java_developer.html">Show More</a>
-		</div>
+					echo "<div class='job_details'>";
+					echo "<div class='job_details--container'>";
+					echo "<p class='job_details--title'><img class='icon' src='images/salary_icon.png' alt='salary icon'></p>";
+					echo "<p class='job_details--info'>:" . $row['salary'] . "</p>";
+					echo "</div>";
 
-		<aside>
-			<p>
-				<strong>What&#39;s on Offer: </strong>
-			</p>
-			<ol>
-				<li>Opportunity to work with the biggest players in the industry</li>
-				<li>Stable and productive environment with exposure towards the latest technologies</li>
-			</ol>
-		</aside>
+					echo "<div class='job_details--container'>";
+					echo "<p class='job_details--title'><img class='icon' src='images/jobtype_icon.png' alt='jobtype icon'></p>";
+					echo "<p class='job_details--info'>: " . $row['jobtype'] . "</p>";
+					echo "</div>";
 
-		<div class="job">
-			<section class="job_overview">
-				<h4>Security Analyst</h4>
-				<p class="job_location"><img class="icon" src="images/location_icon.png" alt="location icon"> Melbourne, VIC
-					3000</p>
-				<p class="job_overview_info">Part of the <em>JavaStorm Digital Security Department</em> and specializes in
-					software solution security initiatives across the group.</p>
-			</section>
-
-			<div class="job_details">
-				<div class="job_details--container">
-					<p class="job_details--title"><img class="icon" src="images/salary_icon.png" alt="salary icon"></p>
-					<p class="job_details--info">: $130,000 - $145,000</p>
-				</div>
-
-				<div class="job_details--container">
-					<p class="job_details--title"><img class="icon" src="images/jobtype_icon.png" alt="jobtype icon"></p>
-					<p class="job_details--info">: Full-Time, Contract</p>
-				</div>
-
-				<div class="job_details--container">
-					<p class="job_details--title"><img class="icon" src="images/shift_icon.png" alt="shift icon"></p>
-					<p class="job_details--info">: Flexible - Mon to Fri</p>
-				</div>
-			</div>
-
-			<div class="job_reference_number">
-				<p id="ref">Reference Number: DEF67</p>
-			</div>
-
-			<a class="btn" href="jobs/security_analyst.html">Show More</a>
-		</div>
-
-		<aside>
-			<p>
-				<strong>What&#39;s on Offer: </strong>
-			</p>
-			<ol>
-				<li>Opportunity to work with the biggest players in the industry</li>
-				<li>Career advancement opportunities within the organization</li>
-				<li>Supportive work environment with a focus on employee well-being</li>
-			</ol>
-		</aside>
+					echo "<div class='job_details--container'>";
+					echo "<p class='job_details--title'><img class='icon' src='images/shift_icon.png' alt='shift icon'></p>";
+					echo "<p class='job_details--info'>: " .$row['shift'] . "</p>";
+					echo "</div>";
+					echo "</div>";
+					echo "<div class='job_reference_number'>";
+					echo "<p>Reference Number: " . $row['job_reference_number'] . "</p>";
+					echo "</div>";
+					echo "<a class='btn' href='jobs_desc.php?job=" . $row['job_reference_number'] . "'>Show More</a>";
+					echo "</div>";
+					echo "<aside>";
+					echo $row['html_offer'];
+					echo "</aside>";
+				}
+				mysqli_close($conn);
+			} catch(Exception $err) {
+				echo "<section>No job found</section>";
+				echo "<p>ERROR: " . $err->getMessage() . "</p>";
+			}
+		?>
 	</main>
 
 	<?php include "./common/footer.inc" ?>
