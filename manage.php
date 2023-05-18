@@ -48,7 +48,10 @@ require_once ('./dbconfig/dbhelper.php');
             <option value="1">Java Developer</option>
             <option value="2">Data Analyst</option>
         </select>
-        <p>Delete</p>
+        <input type="submit">
+    </form>
+    <p>Delete</p>
+    <form>
         <select name="delete" id="delete">
             <option value="">Choose position</option>
             <option value="1">Java Developer</option>
@@ -56,6 +59,7 @@ require_once ('./dbconfig/dbhelper.php');
         </select>
         <input type="submit">
     </form>
+
     <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -155,5 +159,6 @@ foreach ($studentList as $std) {
 </body>
 
 </html>
+
 
 
