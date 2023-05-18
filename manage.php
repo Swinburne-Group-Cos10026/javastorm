@@ -40,6 +40,7 @@ require_once ('./dbconfig/dbhelper.php');
             ?>
     </header>
     <main>
+    <p>Search EOI</p>
     <form method="get">
         <input type="text" name="first_name">
         <input type="text" name="last_name">
@@ -48,7 +49,7 @@ require_once ('./dbconfig/dbhelper.php');
             <option value="1">Java Developer</option>
             <option value="2">Data Analyst</option>
         </select>
-        <input type="submit">
+        <input type="submit" value="Search">
     </form>
     <p>Delete</p>
     <form>
@@ -57,7 +58,7 @@ require_once ('./dbconfig/dbhelper.php');
             <option value="1">Java Developer</option>
             <option value="2">Data Analyst</option>
         </select>
-        <input type="submit">
+        <input type="submit" value="Delete">
     </form>
 
     <table class="table table-bordered">
