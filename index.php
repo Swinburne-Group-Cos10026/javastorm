@@ -17,14 +17,14 @@
 <body>	
 	<header id="header__home">
 		<div id="navbar">
-			<?php include "./common/header.inc" ?>
+			<?php require_once "./common/header.inc" ?>
 			<?php 
-				include("./common/menu.php");
+				require_once("./common/menu.php");
 				navbar("Home");
 			?>
 		</div>
 		<?php 
-				include("./common/banner.php");
+				require_once("./common/banner.php");
 				banner("Home");
 			?>
 	</header>
@@ -88,7 +88,7 @@
 					<p>See live demos, listen to case studies, speak with Wearable Tech Experts The first Wearable Tech
 						Expo in Tokyo 2014. Key players from Japan, America and Europe announced their new products and
 						attracted attention from all over the world. The next Wearable Tech Expo in Tokyo will be
-						doubling in size and include Robotics and IoT. The main players in the wearable industry, human
+						doubling in size and require_once Robotics and IoT. The main players in the wearable industry, human
 						factor engineers, brain scientists, media providers and creators will discuss the future of
 						wearable technology! </p>
 					<a class="link" href="#">More...</a>
@@ -163,7 +163,7 @@
 			</div>
 		</div>
 	</main>
-	<?php include "./common/footer.inc" ?>
+	<?php require_once "./common/footer.inc" ?>
 
 </body>
 

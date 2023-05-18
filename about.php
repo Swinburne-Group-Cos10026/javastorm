@@ -14,14 +14,14 @@
 <body>
 	<header id="header__about">
 		<div id="navbar">
-		<?php include "./common/header.inc" ?>
+		<?php require_once "./common/header.inc" ?>
 		<?php 
-				include("./common/menu.php");
+				require_once("./common/menu.php");
 				navbar("About us");
 			?>
 		</div>
 		<?php 
-				include("./common/banner.php");
+				require_once("./common/banner.php");
 				banner("About us");
 			?>
 	</header>
@@ -184,7 +184,7 @@
 									with
 									a tightly knit community along with amazing scenic views of the ocean and vegetation around". Indigo's
 									other
-									interests include his love for Star wars along with a passion for sports such as soccer and tennis.
+									interests require_once his love for Star wars along with a passion for sports such as soccer and tennis.
 								</p>
 							</div>
 						</label>
@@ -308,7 +308,7 @@
 			</section>
 		</section>
 	</main>
-	<?php include "./common/footer.inc" ?>
+	<?php require_once "./common/footer.inc" ?>
 </body>
 
 </html>

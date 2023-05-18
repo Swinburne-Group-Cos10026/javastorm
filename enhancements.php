@@ -13,9 +13,9 @@
 <body>
 	<header id="header__apply">
 		<div id="navbar">
-			<?php include "./common/header.inc" ?>
+			<?php require_once "./common/header.inc" ?>
 			<?php 
-				include("./common/menu.php");
+				require_once("./common/menu.php");
 				navbar("Enhancements");
 			?>
 		</div>
@@ -89,7 +89,7 @@
 			</section>
 		</section>
 	</main>
-	<?php include "./common/footer.inc" ?> 
+	<?php require_once "./common/footer.inc" ?> 
 </body>
 
 </html>
