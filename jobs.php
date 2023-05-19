@@ -37,7 +37,7 @@
 					$sql_db
 				);
 
-				$query = "SELECT * FROM job;";
+				$query = "SELECT * FROM JOB;";
 				$result = mysqli_query($conn, $query);
 
 				while ($row = mysqli_fetch_assoc($result)) {
@@ -61,7 +61,7 @@
 
 					echo "<div class='job_details--container'>";
 					echo "<p class='job_details--title'><img class='icon' src='images/shift_icon.png' alt='shift icon'></p>";
-					echo "<p class='job_details--info'>: " .$row['shift'] . "</p>";
+					echo "<p class='job_details--info'>: " . $row['shift'] . "</p>";
 					echo "</div>";
 					echo "</div>";
 					echo "<div class='job_reference_number'>";
@@ -69,9 +69,7 @@
 					echo "</div>";
 					echo "<a class='btn' href='jobs_desc.php?job=" . $row['job_reference_number'] . "'>Show More</a>";
 					echo "</div>";
-					echo "<aside>";
 					echo $row['html_offer'];
-					echo "</aside>";
 				}
 				mysqli_close($conn);
 			} catch(Exception $err) {

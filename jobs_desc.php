@@ -37,7 +37,7 @@
 					$sql_db
 				);
 
-				$query = "SELECT * FROM job WHERE job_reference_number=" . $_GET['job'] . ";";
+				$query = "SELECT * FROM JOB_DESCRIPTION WHERE job_reference_number='" . $_GET['job'] . "';";
 				$result = mysqli_query($conn, $query);
 
 				$row = mysqli_fetch_assoc($result);
