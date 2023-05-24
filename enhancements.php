@@ -29,7 +29,7 @@
 				<p>It only uses basic features like radio buttons, background images, pseudo elements, grid layout.</p>
 				<p>Combine all those simple stuffs, I have made a card with on-click reactions without the use of Javascript.
 				</p>
-				<a href="about.html#teammembers" class="link">Link.</a>
+				<a href="about.php#teammembers" class="link">Link.</a>
 			</section>
 			<section>
 				<h5>Implementations</h5>
@@ -68,7 +68,7 @@
 				<p>For the mobile, tablet version, I would have a burger menu then expand it to a fullscreen vertical navbar.
 					They still highlight the current page, but no more animation between two links.</p>
 				<p>Please use the inspection tool to check out the phone mode</p>
-				<a href="about.html" class="link">Link.</a>
+				<a href="about.php" class="link">Link.</a>
 			</section>
 			<section>
 				<h5>Implementations</h5>
