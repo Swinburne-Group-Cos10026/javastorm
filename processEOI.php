@@ -247,8 +247,6 @@
                         $selectLastEOIResult = mysqli_query($conn, $selectLastEOIQuery);
                         $row = mysqli_fetch_assoc($selectLastEOIResult);
                         $lastID = $row ? $row["max_id"] : 'EOI-' . date('Y') . '-0';
-                        //strpos() finds the last occurrence of the '-' character
-                        //substring() extracts the substring starting from that position until the end
                         $lastNumber = explode("-", $lastID);
                         $lastNumber = $lastNumber[2];
                         $nextNumber = $lastNumber + 1; //extract the number based on index
