@@ -44,7 +44,7 @@ require_once ('./dbconfig/dbhelper.php');
     <form method="get">
         <input type="text" name="first_name">
         <input type="text" name="last_name">
-        <select name="position" id="position">
+        <select name="job_reference_number" id="job_reference_number">
             <option value="">All</option>
             <option value="1">Java Developer</option>
             <option value="2">Data Analyst</option>
@@ -54,7 +54,7 @@ require_once ('./dbconfig/dbhelper.php');
     <p>Delete</p>
     <form>
         <select name="delete" id="delete">
-            <option value="">Choose position</option>
+            <option value="">Choose job_reference_number</option>
             <option value="1">Java Developer</option>
             <option value="2">Data Analyst</option>
         </select>
@@ -82,31 +82,30 @@ require_once ('./dbconfig/dbhelper.php');
 $sql = "";
 $fN = isset($_GET['first_name']) && $_GET['first_name'] != '';
 $lN = isset($_GET['last_name']) && $_GET['last_name'] != '';
-$p = isset($_GET['position']) && $_GET['position'] != '';
+$p = isset($_GET['job_reference_number']) && $_GET['job_reference_number'] != '';
 $d = isset($_GET['delete']) && $_GET['delete'] != '';
+$s = isset($_GET['status']) && $_GET['status'] != '';
+$e = isset($_GET['eoi_id']) && $_GET['eoi_id'] != '';
 
+if($s && $e) {
+    $sql = 'update eoi set status = "'.$_GET['status'].'" where eoi_id = '.$_GET['eoi_id'];
+    execute($sql);
+}
 if($fN && $lN && $p) {
-    $sql = 'select * from eoi where first_name like "'.$_GET['first_name'].'%" and last_name like "'.$_GET['last_name'].'%" and job_reference_number = "'.$_GET['position'].'"';
-} 
-if($fN && $lN) {
+    $sql = 'select * from eoi where first_name like "'.$_GET['first_name'].'%" and last_name like "'.$_GET['last_name'].'%" and job_reference_number = "'.$_GET['job_reference_number'].'"';
+} else if($fN && $lN) {
     $sql = 'select * from eoi where first_name like "'.$_GET['first_name'].'%" and last_name like "'.$_GET['last_name'].'%"';
-}
-if($fN && $p) {
-    $sql = 'select * from eoi where first_name like "'.$_GET['first_name'].'%" and job_reference_number = "'.$_GET['position'].'"';
-}
-if($lN && $p) {
-    $sql = 'select * from eoi where last_name like "'.$_GET['last_name'].'%" and job_reference_number = "'.$_GET['position'].'"';
-}   
-if($fN) {
+} else if($fN && $p) {
+    $sql = 'select * from eoi where first_name like "'.$_GET['first_name'].'%" and job_reference_number = "'.$_GET['job_reference_number'].'"';
+} else if($lN && $p) {
+    $sql = 'select * from eoi where last_name like "'.$_GET['last_name'].'%" and job_reference_number = "'.$_GET['job_reference_number'].'"';
+} else if($fN) {
     $sql = 'select * from eoi where first_name like "'.$_GET['first_name'].'%"';
-}
-if($lN) {
+} else if($lN) {
     $sql = 'select * from eoi where last_name like "'.$_GET['last_name'].'%"';
-}
-if($p) {
-    $sql = 'select * from eoi where job_reference_number = "'.$_GET['position'].'"';
-}
-if(($fN || $lN || $p) == false) {
+} else if($p) {
+    $sql = 'select * from eoi where job_reference_number = "'.$_GET['job_reference_number'].'"';
+} else if(($fN || $lN || $p) == false) {
     $sql = 'select * from eoi';
 }
 $studentList = executeResult($sql);
@@ -119,11 +118,16 @@ $index = 1;
 foreach ($studentList as $std) {
     echo '<tr>
             <td>
-                <div>
-                    <button onclick="changeStatus('.$std['eoi_id'].', this)">New</button>
-                    <button onclick="changeStatus('.$std['eoi_id'].', this)">Current</button>
-                    <button onclick="changeStatus('.$std['eoi_id'].', this)">Final</button>
-                </div>
+                    <form method="get">
+                        <input style="display: none;" type="text" name="eoi_id" value="'.$std['eoi_id'].'">
+                        <select name="status" id="status">
+                            <option value="">Update Status</option>
+                            <option value="New">New</option>
+                            <option value="Current">Current</option>
+                            <option value="Final">Final</option>
+                        </select>
+                        <input type="submit" value="changeStatus">
+                    </form>
             </td>
             <td>'.$std['job_reference_number'].'</td>
             <td>'.$std['first_name'].'</td>
@@ -143,20 +147,6 @@ foreach ($studentList as $std) {
 
     </main>
     <?php include "./common/footer.inc" ?>
-    <script type="text/javascript">
-        
-        function changeStatus(id, t) {
-
-            //console.log(t.innerText);
-            $.post('de.php', {
-                'eoi_id': id,
-                'value': t.innerText
-            }, function(data) {
-                //alert(data)
-                location.reload()
-            })
-        }
-    </script>
 </body>
 
 </html>
