@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 	<title>Job Application</title>
@@ -107,7 +107,7 @@
 
 			<div class="form-control">
     			<select id="state" name="state" required>
-					<option value="" disabled selected></option>
+					<option value="" disabled selected>&nbsp;</option>
 					<option value="VIC" <?php if (isset($_SESSION["form_data"]["state"]) && $_SESSION["form_data"]["state"] == "VIC") echo "selected"; ?>>VIC</option>
 					<option value="NSW" <?php if (isset($_SESSION["form_data"]["state"]) && $_SESSION["form_data"]["state"] == "NSW") echo "selected"; ?>>NSW</option>
 					<option value="QLD" <?php if (isset($_SESSION["form_data"]["state"]) && $_SESSION["form_data"]["state"] == "QLD") echo "selected"; ?>>QLD</option>
