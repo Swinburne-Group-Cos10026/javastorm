@@ -171,8 +171,6 @@
             if(!$conn) {
                 echo "<p>Database connection failure.</p>";
             } else {
-                $applicants_table = "APPLICANTS";
-                $eoi_table = "EOI";
 
                 //Check if the EOI table exists, and create it if necessary
                 $createEOIQuery = "CREATE TABLE IF NOT EXISTS EOI (
@@ -186,6 +184,7 @@
                             skill5 VARCHAR(255),
                             other_skills TEXT,
                             status ENUM ('New', 'Current', 'Final') DEFAULT 'New',
+                            date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
                             PRIMARY KEY (eoi_id),
                             FOREIGN KEY (job_reference_number) REFERENCES JOB(job_reference_number),
                             FOREIGN KEY (applicant_email) REFERENCES APPLICANTS(email)
@@ -262,7 +261,8 @@
                             skill3,
                             skill4,
                             skill5,
-                            other_skills
+                            other_skills,
+                            date
                         ) VALUES (
                         '" . mysqli_real_escape_string($conn, $eoiID). "',
                         '" . mysqli_real_escape_string($conn, $jobReferenceNum). "',
@@ -272,7 +272,8 @@
                         " . (isset($skills[2]) ? "'" . mysqli_real_escape_string($conn, $skills[2]). "'" : "NULL") . ",
                         " . (isset($skills[3]) ? "'" . mysqli_real_escape_string($conn, $skills[3]). "'" : "NULL") . ",
                         " . (isset($skills[4]) ? "'" . mysqli_real_escape_string($conn, $skills[ 4]). "'" : "NULL") . ",
-                        " . (isset($otherSkills) ? "'" . mysqli_real_escape_string($conn, $otherSkills). "'" : "NULL") . "
+                        " . (isset($otherSkills) ? "'" . mysqli_real_escape_string($conn, $otherSkills). "'" : "NULL") . ",
+                        NOW()
                         )";
                     
                         $insertEOIResult = mysqli_query($conn, $insertEOIQuery);
