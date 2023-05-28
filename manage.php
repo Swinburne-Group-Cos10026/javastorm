@@ -19,10 +19,7 @@ require_once ('./dbconfig/dbhelper.php');
 
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-    <style>
-        
-    </style>
+    <link href="styles/styleManage.css" rel="stylesheet">
 </head>
 
 <body>  
@@ -40,7 +37,7 @@ require_once ('./dbconfig/dbhelper.php');
             ?>
     </header>
     <main>
-    <p>Search EOI</p>
+    <p class="center">Search EOI</p>
     <form method="get">
         <input type="text" name="first_name">
         <input type="text" name="last_name">
@@ -49,18 +46,19 @@ require_once ('./dbconfig/dbhelper.php');
             <option value="1">Java Developer</option>
             <option value="2">Data Analyst</option>
         </select>
-        <input type="submit" value="Search">
+        <button type="submit" value="Search">Search</button>
     </form>
-    <p>Delete</p>
+    <br><br>
+    <p class="center">Delete</p>
     <form>
         <select name="delete" id="delete">
             <option value="">Choose job_reference_number</option>
             <option value="1">Java Developer</option>
             <option value="2">Data Analyst</option>
         </select>
-        <input type="submit" value="Delete">
+        <button type="submit" value="Delete">Delete</button>
     </form>
-
+        <br>
     <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -126,7 +124,7 @@ foreach ($studentList as $std) {
                             <option value="Current">Current</option>
                             <option value="Final">Final</option>
                         </select>
-                        <input type="submit" value="changeStatus">
+                        <button type="submit" value="changeStatus">change status</button>
                     </form>
             </td>
             <td>'.$std['job_reference_number'].'</td>
