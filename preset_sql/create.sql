@@ -1,7 +1,9 @@
-DROP TABLE IF EXISTS JOB;
-DROP TABLE IF EXISTS JOB_DESCRIPTION;
+DROP TABLE IF EXISTS job;
+DROP TABLE IF EXISTS eoi;
 DROP TABLE IF EXISTS EOI;
 DROP TABLE IF EXISTS APPLICANTS;
+DROP TABLE IF EXISTS JOB_DESCRIPTION;
+DROP TABLE IF EXISTS JOB;
 DROP TABLE IF EXISTS MANAGER;
 
 CREATE TABLE JOB (
@@ -24,30 +26,32 @@ CREATE TABLE JOB_DESCRIPTION (
 	PRIMARY KEY (job_description_id)
 );
 
-CREATE TABLE EOI (
-	eoi_id INT AUTO_INCREMENT,
-	job_reference_number VARCHAR(255) NOT NULL,
+CREATE TABLE APPLICANTS (
+	first_name VARCHAR(255) NOT NULL,
+	last_name VARCHAR(255) NOT NULL,
 	street_address VARCHAR(255) NOT NULL,
 	suburb_town VARCHAR(255) NOT NULL,
 	state VARCHAR(255) NOT NULL,
 	postcode INT NOT NULL,
-	PRIMARY KEY (eoi_id),
-	FOREIGN KEY (job_reference_number) REFERENCES JOB(job_reference_number)
-);
-
-CREATE TABLE APPLICANTS (
-	applicant_id INT AUTO_INCREMENT,
-	eoi_id INT NOT NULL,
-	job_reference_number VARCHAR(255) NOT NULL,
-	first_name VARCHAR(255) NOT NULL,
-	last_name VARCHAR(255) NOT NULL,
 	email VARCHAR(255) NOT NULL,
 	phone_number VARCHAR(255) NOT NULL,
+	PRIMARY KEY (email)
+);
+
+CREATE TABLE EOI (
+	eoi_id  INT NOT NULL AUTO_INCREMENT,
+	job_reference_number VARCHAR(255) NOT NULL,
+	applicant_email VARCHAR(255) NOT NULL,
+	skill1 VARCHAR(255),
+	skill2 VARCHAR(255),
+	skill3 VARCHAR(255),
+	skill4 VARCHAR(255),
+	skill5 VARCHAR(255),
+	other_skills TEXT,
 	status ENUM('New', 'Current', 'Final') DEFAULT 'New',
-	PRIMARY KEY (applicant_id),
-	UNIQUE (email),
+	PRIMARY KEY (eoi_id),
 	FOREIGN KEY (job_reference_number) REFERENCES JOB(job_reference_number),
-	FOREIGN KEY (eoi_id) REFERENCES JOB(EOI)
+	FOREIGN KEY (applicant_email) REFERENCES APPLICANTS(email)
 );
 
 CREATE TABLE MANAGER (

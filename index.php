@@ -9,26 +9,28 @@
 	<meta name="author" content="Burhanuddin kapasi">
 	<title> Javastorm careers</title>
 	<link href="styles/style.css" rel="stylesheet">
-	<style>
-
-	</style>
 </head>
 
 <body>	
 	<header id="header__home">
 		<div id="navbar">
 			<?php require_once "./common/header.inc" ?>
-			<?php 
+			<?php
 				require_once("./common/menu.php");
 				navbar("Home");
 			?>
 		</div>
-		<?php 
-				require_once("./common/banner.php");
-				banner("Home");
-			?>
+		<?php
+			require_once("./common/banner.php");
+			banner("Home");
+		?>
 	</header>
 	<main>
+		<?php
+			session_start();
+			require_once('common/utils.php');
+			$_SESSION['user'] = null;
+		?>
 		<div class="sec-intro">
 			<h2>Be Innovative!</h2>
 		</div>
@@ -164,7 +166,9 @@
 		</div>
 	</main>
 	<?php require_once "./common/footer.inc" ?>
-
+	<!-- <style> -->
+	<!-- 	<?php require_once 'styles/style.css'; ?> -->
+	<!-- </style> -->
 </body>
 
 </html>

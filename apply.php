@@ -21,7 +21,7 @@
 		</div>
 	</header>
 	<main>
-		<form id="form__apply" action="https://mercury.swin.edu.au/it000000/formtest.php" method="post">
+		<form id="form__apply" action="processEOI.php" method="post">
 			<h1>Job Application Form</h1>
 			<div class="form-control" id="job-reference-number__container">
 				<input type="text" id="job-reference-number" name="job-reference-number" pattern="[A-Za-z0-9]{5}"
