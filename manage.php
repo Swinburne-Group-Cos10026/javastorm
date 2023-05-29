@@ -44,12 +44,12 @@
 				<h2>Search EOI</h2>
 				<div class="form-control" id="first-name__container">
 					<input type="text" id="first_name" name="first_name" pattern="[A-Za-z]+" maxlength="20"
-						placeholder="First Name:" required>
+						placeholder="First Name:">
 					<label for="first_name">First Name:</label>
 				</div>
 				<div class="form-control" id="last_name__container">
 					<input type="text" id="last_name" name="last_name" pattern="[A-Za-z]+" maxlength="20"
-						placeholder="Last Name:" required>
+						placeholder="Last Name:">
 					<label for="last_name">Last Name:</label>
 				</div>
 				<div class="form-control" id="job-reference-number__container">
@@ -129,9 +129,6 @@
 			add_cond_and($cond, "first_name");
 			add_cond_and($cond, "last_name");
 			add_cond_and($cond, "job_reference_number");
-
-			if (empty($cond))
-				throw new Exception("Please fill in the conditions.");
 
 			$sql .= $cond . ";";
 
