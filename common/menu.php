@@ -7,7 +7,7 @@ $nav_elms = [
 	"Jobs" => "jobs.php",
 	"Apply" => "apply.php",
 	"Enhancements" => "enhancements.php",
-	"Enhancements PHP" => "enhancements2.php",
+	"PHP" => "enhancements2.php",
 	"Login" => "manager_login.php",
 ];
 
@@ -17,7 +17,7 @@ $manager_nav_elms = [
 	"Jobs" => "jobs.php",
 	"Apply" => "apply.php",
 	"Enhancements" => "enhancements.php",
-	"Enhancements PHP" => "enhancements2.php",
+	"PHP" => "enhancements2.php",
 	"Manage" => "manage.php",
 	"Logout" => "logout.php",
 ];

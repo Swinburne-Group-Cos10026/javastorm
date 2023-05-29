@@ -15,76 +15,106 @@
 			<?php require_once "./common/header.inc" ?>
 			<?php 
 				require_once("./common/menu.php");
-				navbar("Enhancements");
+				navbar("PHP");
 			?>
 		</div>
 	</header>
 	<main>
-		<h1>Enhancements</h1>
+		<h1>Enhancements PHP</h1>
 		<section>
-			<h3>About Card</h3>
+			<h3>Many-Many Relationship</h3>
 			<section>
 				<h5>What's special about it?</h5>
-				<p>It only uses basic features like radio buttons, background images, pseudo elements, grid layout.</p>
-				<p>Combine all those simple stuffs, I have made a card with on-click reactions without the use of Javascript.
-				</p>
-				<a href="about.html#teammembers" class="link">Link.</a>
+				<p>We use a Many-Many Relationship for the database. We have a separate table for Jobs and for Applicants.</P>
+				<p>Let's take a look at the relationship between applicants and eoi first:</p>
+				<p>So now if a person applies another position, we would not have redundant information</p>
+				<p>The system still have some slight problem regarding temporary use applicants' email as the primary key instead of a register system for the applicants</p>
+				<br>
+				<p>Another relationship is between jobs and jobs' description.</p>
+				<p>Since we have a separate page for more detail for each job, we decide to contain it in a separate table to reduce the size</p>
+				<a href="apply.html" class="link">Link.</a>
 			</section>
 			<section>
 				<h5>Implementations</h5>
-				<p>I set radio button to none and use the label as display block.</p>
 				<p>
-					By clicking on the label I would change the state of the radio button and modify the css with :checked state
+					Please take a look at our SQL below:
 				</p>
-				<p>
-					Combine the card with grid, I set the clicked on to expand to a whole row and move other memebrs down to
-					second row.
-				</p>
-				<p>
-					In addition, I am using the auto-fill of the grid, so in smaller device that is not too small, we would
-					only have 2 or 3 collumns.
-				</p>
-				<p>
-					In a phone situation, I would center all the cards, and drop the text from below instead of on the side and
-					move them the the first
-					row
-				</p>
+				<pre>
+CREATE TABLE JOB (
+	job_reference_number VARCHAR(255) NOT NULL,
+	position VARCHAR(255) NOT NULL,
+	address VARCHAR(255) NOT NULL,
+	salary VARCHAR(255) NOT NULL,
+	jobtype VARCHAR(255) NOT NULL,
+	shift VARCHAR(255) NOT NULL,
+	short_desc TEXT NOT NULL,
+	html_offer TEXT NOT NULL,
+	PRIMARY KEY (job_reference_number)
+);
+
+CREATE TABLE JOB_DESCRIPTION (
+	job_description_id INT NOT NULL AUTO_INCREMENT,
+	job_reference_number VARCHAR(255) NOT NULL,
+	html_page TEXT NOT NULL,
+	FOREIGN KEY (job_reference_number) REFERENCES JOB(job_reference_number),
+	PRIMARY KEY (job_description_id)
+);
+CREATE TABLE APPLICANTS (
+	first_name VARCHAR(255) NOT NULL,
+	last_name VARCHAR(255) NOT NULL,
+	street_address VARCHAR(255) NOT NULL,
+	suburb_town VARCHAR(255) NOT NULL,
+	state VARCHAR(255) NOT NULL,
+	postcode INT NOT NULL,
+	email VARCHAR(255) NOT NULL,
+	phone_number VARCHAR(255) NOT NULL,
+	PRIMARY KEY (email)
+);
+
+CREATE TABLE EOI (
+	eoi_id  INT NOT NULL AUTO_INCREMENT,
+	job_reference_number VARCHAR(255) NOT NULL,
+	applicant_email VARCHAR(255) NOT NULL,
+	skill1 VARCHAR(255),
+	skill2 VARCHAR(255),
+	skill3 VARCHAR(255),
+	skill4 VARCHAR(255),
+	skill5 VARCHAR(255),
+	other_skills TEXT,
+	status ENUM('New', 'Current', 'Final') DEFAULT 'New',
+	PRIMARY KEY (eoi_id),
+	FOREIGN KEY (job_reference_number) REFERENCES JOB(job_reference_number),
+	FOREIGN KEY (applicant_email) REFERENCES APPLICANTS(email)
+);
+				</pre>
 			</section>
 		</section>
 		<section>
-			<h3>Responsive and Reactive Navbar</h3>
+			<h3>Login for Managers</h3>
 			<section>
 				<h5>What's special about it?</h5>
 				<p>
-					The header has 2 modes, one has banner and one does not. The one has banner will cover the whole pages. The
-					other one will only have a background colour of darker accent colour.
+					We have password hashing system and verify password for the login.
 				</p>
-				<p>For the desktop version of the navbar, it will highlight the current page with a class.</p>
-				<p>
-					For each elements of the navbar, they will have differet colours and gradients to highlight them, and there
-					will be animation moving around under the link.
-				</p>
-				<p>For the mobile, tablet version, I would have a burger menu then expand it to a fullscreen vertical navbar.
-					They still highlight the current page, but no more animation between two links.</p>
-				<p>Please use the inspection tool to check out the phone mode</p>
-				<a href="about.html" class="link">Link.</a>
+				<p>We prepare system to have register system for the admin with a role system.</p>
+				<p>Due to we have met the required number of enhancements, we only introduce the poteintial of what we can expand the login system instead of also implementing register system.</p>
+				<p>Since on Swinburne's sever, the PHP's version is 5.4 which doesn't have the default function password_hash(), we have to created one our own based on bcrypt algorithm.</p>
+				<a href="manager_login.html" class="link">Link.</a>
 			</section>
 			<section>
 				<h5>Implementations</h5>
 				<p>
-					I use display flex and fixed width for links so that the indicator can move around between links smoothly.
+					Please take a look at our SQL below:
 				</p>
-				<p>
-					For the burger menu, I use the same system as the previous enhancement, but instead of radio buttons, I use
-					checkbox buttons.
-				</p>
-				<p>
-					I expand the the burger menu with box shadow instead of a bigger div.
-				</p>
-				<p>
-					I would also need to set the nav to pointer-events: none so that I would not click on it while its opacity
-					being 0.
-				</p>
+				<pre>
+CREATE TABLE MANAGER (
+	manager_id INT AUTO_INCREMENT,
+	username VARCHAR(255) NOT NULL,
+	password VARCHAR(255) NOT NULL,
+	role INT DEFAULT 0,
+	PRIMARY KEY (manager_id)
+);
+				</pre>
 			</section>
 		</section>
 	</main>
