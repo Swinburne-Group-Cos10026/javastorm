@@ -1,0 +1,225 @@
+/*******
+* About Page
+********/
+
+#header__about::before {
+  background-image: url("styles/images/banner__about.jpg");
+  filter: brightness(50%);
+}
+
+
+.group-info__dl {
+  height: 400px;
+  float: left;
+}
+
+.group-info__figure {
+  display: block;
+}
+
+.group-info__figure img {
+  /* height: 400px; */
+	width: 100%;
+	max-width: 420px;
+  border: 2px dotted black;
+  border-radius: 10px;
+}
+
+/* Setting size of the card */
+.team-members__container {
+	clear: both;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+	justify-content: space-around;
+  gap: 10px;
+}
+
+.personal-info-card {
+  position: relative;
+  height: 360px;
+  width: 270px;
+}
+
+.personal-info-card figcaption {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 1.2em;
+  font-family: var(--font-heading);
+}
+
+.personal-info-card .personal-info-card__role {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  font-size: 0.8em;
+  font-family: var(--font-sans);
+}
+
+.personal-info-card figcaption,
+.personal-info-card .personal-info-card__role {
+  color: white;
+  text-shadow: 1px 1px 2px var(--accent-darker);
+}
+
+/* contain the image */
+.personal-info-card__border {
+  display: block;
+  border-radius: 10px;
+  position: relative;
+  width: 270px;
+  height: 360px;
+  background-size: 300px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: .6s ease-in-out background;
+  z-index: 10;
+}
+
+.personal-info-card__border::before {
+  content: "";
+  position: absolute;
+  display: block;
+  /* border around the card */
+  /* margin 10px -> position 5px */
+  top: 5px;
+  left: 5px;
+  width: 260px;
+  height: 350px;
+  transition: ease-in-out 300ms border;
+  border-radius: 10px;
+  border: 2px solid;
+  border-color: transparent;
+}
+
+.personal-info-card__detail {
+  position: absolute;
+	max-width: 0px;
+	width: 600px;
+  height: 350px;
+  top: 0;
+  left: 270px;
+  z-index: -1;
+  font-size: 0.8em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .team-members__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* Setting background photo for each person */
+.personal-info-card--Pham .personal-info-card__border {
+  background-image: url("styles/images/Pham.JPG");
+}
+.personal-info-card--Minh .personal-info-card__border {
+  background-image: url("styles/images/Minh.JPG");
+}
+.personal-info-card--Jean .personal-info-card__border {
+  background-image: url("styles/images/Jean.JPG");
+}
+.personal-info-card--Indigo .personal-info-card__border {
+  background-image: url("styles/images/Indigo.JPG");
+}
+.personal-info-card--Burhan .personal-info-card__border {
+  background-image: url("styles/images/Burhan.jpg");
+}
+
+.personal-info-card figcaption,
+.personal-info-card__role,
+.personal-info-card__detail {
+  opacity: 0;
+  transition: .3s ease-in-out transform;
+}
+
+.personal-info-card:hover .personal-info-card__border {
+  background-position: left;
+  background-size: 450px;
+}
+
+input[name="personal-info-card__label"]:checked
+  + .personal-info-card
+  .personal-info-card__border::before,
+.personal-info-card:hover .personal-info-card__border::before {
+  border-color: white;
+}
+
+/* make radio button disappear */
+input[name="personal-info-card__label"] {
+  display: none;
+}
+
+.personal-info-card:hover figcaption,
+.personal-info-card:hover .personal-info-card__role,
+input[name="personal-info-card__label"]:checked
+  + .personal-info-card
+  figcaption,
+input[name="personal-info-card__label"]:checked
+  + .personal-info-card
+  .personal-info-card__role,
+input[name="personal-info-card__label"]:checked
+  + .personal-info-card
+  .personal-info-card__detail {
+  opacity: 1;
+}
+
+input[name="personal-info-card__label"]:checked + .personal-info-card {
+	grid-column: 1 / -1;
+  grid-row-start: 1;
+}
+
+input[name="personal-info-card__label"]:checked
+  + .personal-info-card
+  .personal-info-card__detail {
+  /* Move out of the card (width 270px)
+	 * with margin 30px */
+  transform: translateX(30px);
+  max-width: 600px;
+}
+
+@media only screen and (max-width: 600px) {
+  input[name="personal-info-card__label"]:checked + .personal-info-card {
+    height: 700px;
+  }
+
+  input[name="personal-info-card__label"]:checked
+    + .personal-info-card
+    .personal-info-card__detail {
+    left: 0;
+    top: 300px;
+    /* Move out of the card (height 360px) */
+    transform: translateX(0) translateY(30px);
+  }
+
+  .personal-info-card__detail {
+		height: 400px;
+    width: 270px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+input[name="personal-info-card__label"]:checked
+  + .personal-info-card
+  .personal-info-card__detail {
+  max-width: 400px;
+}
+}
+
+.timetable__container {
+  /* show the border of the table */
+  padding: 1px;
+  overflow-x: auto;
+}
+
+.timetable__container table {
+  width: 50%;
+}
+

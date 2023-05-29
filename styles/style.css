@@ -479,6 +479,7 @@ a {
 }
 
 /* Underline styles - details of technique here: https://nickymeuleman.netlify.app/blog/css-animated-wrapping-underline */
+button.link,
 a.link {
   background: linear-gradient(
       to right,
@@ -497,9 +498,16 @@ a.link {
   transition: background-size 400ms;
 }
 
+button.link:hover,
+button.link:focus,
 a.link:hover,
 a.link:focus {
-  background-size: 0 0.1em, 100% 0.1em;
+  background-size:0.1em, 100% 0.1em;
+}
+
+button.link {
+	border: none;
+	font-size: 1rem;
 }
 
 /* use class instead of the element button
@@ -521,6 +529,7 @@ a.link:focus {
 
   background-color: var(--accent);
   color: #ecf0f1;
+	max-height: 3.8em;
 
   transition: background-color 0.3s;
 }
@@ -591,21 +600,6 @@ header {
   z-index: -1;
 }
 
-#header__home::before {
-  background-image: url("images/banner__home.jpg");
-  filter: brightness(50%);
-}
-
-#header__about::before {
-  background-image: url("images/banner__about.jpg");
-  filter: brightness(50%);
-}
-
-#header__jobs::before {
-  background-image: url("images/banner__jobs.jpg");
-  filter: brightness(50%);
-}
-
 #navbar {
   box-shadow: rgba(216, 222, 233, 0.15) 0px 5px 10px 0px;
   width: 100%;
@@ -622,13 +616,12 @@ nav {
   position: absolute;
   right: 4rem;
   display: table;
-  width: 800px;
+  width: 1000px;
   height: 1rem;
 }
 
 nav a {
   position: relative;
-  width: 20%;
   display: table-cell;
   text-align: left;
   text-decoration: none;
@@ -660,46 +653,6 @@ nav a:after {
   height: 4px;
 }
 
-nav a:nth-child(1):before {
-  background-color: yellow;
-}
-
-nav a:nth-child(1):after {
-  background-color: red;
-}
-
-nav a:nth-child(2):before {
-  background-color: #00e2ff;
-}
-
-nav a:nth-child(2):after {
-  background-color: #89ff00;
-}
-
-nav a:nth-child(3):before {
-  background-color: purple;
-}
-
-nav a:nth-child(3):after {
-  background-color: palevioletred;
-}
-
-nav a:nth-child(4):before {
-  background-color: grey;
-}
-
-nav a:nth-child(4):after {
-  background-color: var(--accent);
-}
-
-nav a:nth-child(5):before {
-  background-color: royalblue;
-}
-
-nav a:nth-child(5):after {
-  background-color: aliceblue;
-}
-
 #indicator {
   position: absolute;
   bottom: 0;
@@ -710,22 +663,6 @@ nav a:nth-child(5):after {
   transition: 0.2s ease left;
 }
 
-nav a:nth-child(1).nav-link__current ~ #indicator {
-  left: 0%;
-}
-nav a:nth-child(2).nav-link__current ~ #indicator {
-  left: 20%;
-}
-nav a:nth-child(3).nav-link__current ~ #indicator {
-  left: 40%;
-}
-nav a:nth-child(4).nav-link__current ~ #indicator {
-  left: 60%;
-}
-nav a:nth-child(5).nav-link__current ~ #indicator {
-  left: 80%;
-}
-
 #navbar nav a:hover,
 #navbar #logo:hover {
   color: var(--accent2);
@@ -734,31 +671,6 @@ nav a:nth-child(5).nav-link__current ~ #indicator {
 nav a:hover:before,
 nav a:hover:after {
   transform: scale(1);
-}
-
-nav a:nth-child(1):hover ~ #indicator {
-  left: 0%;
-  background: linear-gradient(130deg, yellow, red);
-}
-
-nav a:nth-child(2):hover ~ #indicator {
-  left: 20%;
-  background: linear-gradient(130deg, #00e2ff, #89ff00);
-}
-
-nav a:nth-child(3):hover ~ #indicator {
-  left: 40%;
-  background: linear-gradient(130deg, purple, palevioletred);
-}
-
-nav a:nth-child(4):hover ~ #indicator {
-  left: 60%;
-  background: linear-gradient(130deg, grey, var(--accent));
-}
-
-nav a:nth-child(5):hover ~ #indicator {
-  left: 80%;
-  background: linear-gradient(130deg, royalblue, aliceblue);
 }
 
 #banner {
@@ -861,9 +773,9 @@ nav a:nth-child(5):hover ~ #indicator {
     opacity: 0;
     position: absolute;
     height: 360px;
-    width: 200px;
-    top: calc(50vh - 180px);
-    left: calc(50vw - 100px);
+    width: 300px;
+    top: calc(50vh - 230px);
+    left: calc(50vw - 120px);
     color: var(--accent-darker);
     display: flex;
     flex-direction: column;
@@ -879,58 +791,6 @@ nav a:nth-child(5):hover ~ #indicator {
   nav a {
     font-size: 1.5em;
     width: 100%;
-    height: 20%;
-  }
-
-  nav a:nth-child(1).nav-link__current ~ #indicator {
-    left: 10px;
-    top: calc(0% + 40px);
-  }
-  nav a:nth-child(2).nav-link__current ~ #indicator {
-    left: 10px;
-    top: calc(20% + 40px);
-  }
-  nav a:nth-child(3).nav-link__current ~ #indicator {
-    left: 10px;
-    top: calc(40% + 40px);
-  }
-  nav a:nth-child(4).nav-link__current ~ #indicator {
-    left: 10px;
-    top: calc(60% + 40px);
-  }
-  nav a:nth-child(5).nav-link__current ~ #indicator {
-    left: 10px;
-    top: calc(80% + 40px);
-  }
-
-  nav a:nth-child(1):hover ~ #indicator {
-    left: 10px;
-    top: calc(0% + 40px);
-    background: linear-gradient(130deg, yellow, red);
-  }
-
-  nav a:nth-child(2):hover ~ #indicator {
-    left: 10px;
-    top: calc(20% + 40px);
-    background: linear-gradient(130deg, #00e2ff, #89ff00);
-  }
-
-  nav a:nth-child(3):hover ~ #indicator {
-    left: 10px;
-    top: calc(40% + 40px);
-    background: linear-gradient(130deg, purple, palevioletred);
-  }
-
-  nav a:nth-child(4):hover ~ #indicator {
-    left: 10px;
-    top: calc(60% + 40px);
-    background: linear-gradient(130deg, grey, var(--accent));
-  }
-
-  nav a:nth-child(5):hover ~ #indicator {
-    left: 10px;
-    top: calc(80% + 40px);
-    background: linear-gradient(130deg, royalblue, aliceblue);
   }
 
   #menu--checker:checked + #menu--checker__label + nav {
@@ -1008,534 +868,5 @@ footer {
 
   .site-footer li {
     display: inline-block;
-  }
-}
-
-/*******
-* Home Page
-********/
-
-/* Quality and Standard */
-.quality-boxes,
-.standards-boxes {
-  margin: auto;
-  border-top: 1px solid var(--accent-darker);
-  border-bottom: 1px solid var(--accent-darker);
-}
-
-.quality-box,
-.standard-box {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.quality-box img,
-.standard-box img {
-  width: 100%;
-	height: 100%;
-	object-fit: cover;
-	object-position: 10% 20%;
-}
-
-.quality-box__content,
-.standard-box__content {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 1em;
-}
-
-.quality-box:nth-child(even) .quality-box__content,
-.quality-box:nth-child(odd) img,
-.standard-box:nth-child(even) .standard-box__content,
-.standard-box:nth-child(odd) img {
-  grid-column-start: 2;
-  grid-row-start: 1;
-}
-
-.quality-box:nth-child(odd) .quality-box__content,
-.quality-box:nth-child(even) img,
-.standard-box:nth-child(odd) .standard-box__content,
-.standard-box:nth-child(even) img {
-  grid-column-start: 1;
-  grid-row-start: 1;
-}
-
-/* Events */
-
-.events {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  height: 450px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin-bottom: 1em;
-  width: 100%;
-}
-
-.event {
-  width: 300px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 1em;
-}
-
-.event img {
-  width: 300px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: 0.1s ease-in-out filter;
-}
-
-.event__detail {
-  opacity: 0;
-  color: var(--accent-lighter);
-  z-index: 10;
-  transition: 0.3s ease-in-out opacity;
-  font-size: .7em !important;
-}
-
-.event:hover .event__detail {
-  opacity: 1;
-}
-
-.event:hover img {
-  filter: brightness(20%);
-}
-
-/* Previous Project */
-
-.projects {
-  display: grid;
-  overflow-x: scroll;
-  grid-template-rows: repeat(auto-fill, min(300px, 1fr));
-  width: 100%;
-}
-
-.project {
-  width: 300px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  color: var(--bg);
-  grid-row-start: 1;
-  margin: 0 1em;
-  padding: 1em;
-  text-shadow: 1px 1px 2px var(--accent-darker);
-}
-
-#project--ctech {
-  background-image: url("images/cTech.jpg");
-}
-
-#project--os {
-  background-image: url("images/operate_system.jpg");
-}
-
-#project--apple {
-  background-image: url("images/apple.jpg");
-}
-
-#project--intel {
-  background-image: url("images/intel.jpg");
-}
-
-#project--samsung {
-  background-image: url("images/samsung.jpg");
-}
-
-#project--telecom {
-  background-image: url("images/telecom.jpg");
-}
-
-/*******
-* About Page
-********/
-
-.group-info__dl {
-  height: 400px;
-  float: left;
-}
-
-.group-info__figure {
-  display: block;
-}
-
-.group-info__figure img {
-  /* height: 400px; */
-	width: 100%;
-	max-width: 420px;
-  border: 2px dotted black;
-  border-radius: 10px;
-}
-
-/* Setting size of the card */
-.team-members__container {
-	clear: both;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-	justify-content: space-around;
-  gap: 10px;
-}
-
-.personal-info-card {
-  position: relative;
-  height: 360px;
-  width: 270px;
-}
-
-.personal-info-card figcaption {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  font-size: 1.2em;
-  font-family: var(--font-heading);
-}
-
-.personal-info-card .personal-info-card__role {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  font-size: 0.8em;
-  font-family: var(--font-sans);
-}
-
-.personal-info-card figcaption,
-.personal-info-card .personal-info-card__role {
-  color: white;
-  text-shadow: 1px 1px 2px var(--accent-darker);
-}
-
-/* contain the image */
-.personal-info-card__border {
-  display: block;
-  border-radius: 10px;
-  position: relative;
-  width: 270px;
-  height: 360px;
-  background-size: 300px;
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: .6s ease-in-out background;
-  z-index: 10;
-}
-
-.personal-info-card__border::before {
-  content: "";
-  position: absolute;
-  display: block;
-  /* border around the card */
-  /* margin 10px -> position 5px */
-  top: 5px;
-  left: 5px;
-  width: 260px;
-  height: 350px;
-  transition: ease-in-out 300ms border;
-  border-radius: 10px;
-  border: 2px solid;
-  border-color: transparent;
-}
-
-.personal-info-card__detail {
-  position: absolute;
-	max-width: 0px;
-	width: 600px;
-  height: 350px;
-  top: 0;
-  left: 270px;
-  z-index: -1;
-  font-size: 0.8em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-@media only screen and (max-width: 600px) {
-  .team-members__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
-
-/* Setting background photo for each person */
-.personal-info-card--Pham .personal-info-card__border {
-  background-image: url("images/Pham.JPG");
-}
-.personal-info-card--Minh .personal-info-card__border {
-  background-image: url("images/Minh.JPG");
-}
-.personal-info-card--Jean .personal-info-card__border {
-  background-image: url("images/Jean.JPG");
-}
-.personal-info-card--Indigo .personal-info-card__border {
-  background-image: url("images/Indigo.JPG");
-}
-.personal-info-card--Burhan .personal-info-card__border {
-  background-image: url("images/Burhan.jpg");
-}
-
-.personal-info-card figcaption,
-.personal-info-card__role,
-.personal-info-card__detail {
-  opacity: 0;
-  transition: .3s ease-in-out transform;
-}
-
-.personal-info-card:hover .personal-info-card__border {
-  background-position: left;
-  background-size: 450px;
-}
-
-input[name="personal-info-card__label"]:checked
-  + .personal-info-card
-  .personal-info-card__border::before,
-.personal-info-card:hover .personal-info-card__border::before {
-  border-color: white;
-}
-
-/* make radio button disappear */
-input[name="personal-info-card__label"] {
-  display: none;
-}
-
-.personal-info-card:hover figcaption,
-.personal-info-card:hover .personal-info-card__role,
-input[name="personal-info-card__label"]:checked
-  + .personal-info-card
-  figcaption,
-input[name="personal-info-card__label"]:checked
-  + .personal-info-card
-  .personal-info-card__role,
-input[name="personal-info-card__label"]:checked
-  + .personal-info-card
-  .personal-info-card__detail {
-  opacity: 1;
-}
-
-input[name="personal-info-card__label"]:checked + .personal-info-card {
-	grid-column: 1 / -1;
-  grid-row-start: 1;
-}
-
-input[name="personal-info-card__label"]:checked
-  + .personal-info-card
-  .personal-info-card__detail {
-  /* Move out of the card (width 270px)
-	 * with margin 30px */
-  transform: translateX(30px);
-  max-width: 600px;
-}
-
-@media only screen and (max-width: 600px) {
-  input[name="personal-info-card__label"]:checked + .personal-info-card {
-    height: 700px;
-  }
-
-  input[name="personal-info-card__label"]:checked
-    + .personal-info-card
-    .personal-info-card__detail {
-    left: 0;
-    top: 300px;
-    /* Move out of the card (height 360px) */
-    transform: translateX(0) translateY(30px);
-  }
-
-  .personal-info-card__detail {
-		height: 400px;
-    width: 270px;
-  }
-}
-
-@media only screen and (max-width: 1000px) {
-input[name="personal-info-card__label"]:checked
-  + .personal-info-card
-  .personal-info-card__detail {
-  max-width: 400px;
-}
-}
-
-.timetable__container {
-  /* show the border of the table */
-  padding: 1px;
-  overflow-x: auto;
-}
-
-.timetable__container table {
-  width: 50%;
-}
-
-/*******
-* Apply Page
-********/
-
-/* Make form grid so that i can have some 
-* input only half size and in the same
-* line as other input */
-#form__apply {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-content: center;
-  grid-gap: 10px;
-}
-
-#form__apply h1 {
-  text-align: center;
-}
-
-/* Making some input fullsize */
-#form__apply button,
-#form__apply h1,
-#form__apply h5,
-#street-address__container,
-#surburb-town__container,
-#job-reference-number__container {
-  grid-column-start: 1;
-  grid-column-end: span 2;
-  width: 100%;
-}
-
-/* Other skill textarea only pop up if 
-* chosen */
-#skill-others__textarea {
-  margin-top: 1em;
-  display: none;
-  resize: none;
-}
-
-#skill-others:checked ~ #skill-others__textarea {
-  display: block;
-}
-
-/* Jobs Page */
-
-.job {
-  position: relative;
-  background: var(--bg);
-  box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
-  border-radius: 10px;
-  overflow: hidden;
-  transition: 0.2s ease;
-  display: grid;
-  grid-template-rows: repeat(6, auto);
-  grid-template-columns: 4fr 1fr;
-  padding: 1.5em 2em;
-  font-size: 0.8em;
-  width: 100%;
-}
-
-.job .btn {
-  grid-column: 4;
-  grid-row: 6;
-  justify-content: right;
-}
-
-.job_overview {
-  grid-column: 1/3;
-  grid-row: 1/3;
-}
-
-.job_details {
-  grid-template-columns: auto auto auto;
-  grid-template-rows: auto auto;
-  width: 100%;
-  grid-row: 4/5;
-  display: flex;
-  flex-flow: row wrap;
-}
-
-.job_details--container {
-  display: inline-flex;
-  background: var(--accent-lighter);
-  border-radius: 0.25rem;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem !important;
-  color: var(--accent-darker);
-  padding: 0.1875rem 0.5rem;
-  margin-right: 0.25rem;
-  margin-bottom: 0.25rem;
-}
-
-.job_details--container p {
-  margin-bottom: 0;
-}
-
-.job_details--title {
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-}
-
-img.icon {
-  color: var(--accent-darker);
-  vertical-align: middle;
-  width: 1rem;
-  height: 1rem;
-}
-
-.job_reference_number {
-  grid-column: 1;
-  grid-row: 6;
-}
-
-.job_referece_number p {
-  font-size: 0.9em;
-  color: darkgray;
-}
-
-.job + aside {
-  width: 100%;
-  max-height: 0;
-  opacity: 0;
-  padding: 1em;
-  background: var(--bg);
-  box-shadow: 0 3px 15px rgba(51, 51, 51, 0.2);
-  border-radius: 10px;
-  transition: ease-in-out 600ms all;
-}
-
-.job:hover + aside {
-  max-height: 500px;
-  opacity: 1;
-  margin: 1em 0;
-}
-
-/* Specific Job Roles Page */
-.job--description .btn {
-  text-align: center;
-}
-
-.job--responsibilities,
-.job--skills {
-  display: inline-block;
-  width: 60%;
-}
-
-.job--benefits {
-  float: right;
-  width: 25%;
-  border: 2px dotted var(--accent);
-  border-radius: 10px;
-  padding: 0 0.8em;
-  font-size: 0.8em;
-}
-
-@media only screen and (max-width: 600px) {
-  .job--responsibilities,
-  .job--skills {
-    width: 100%;
-  }
-  .job--benefits {
-    width: 100%;
-    border: none;
-		clear: both;
-    font-size: 1em;
   }
 }

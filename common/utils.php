@@ -7,9 +7,11 @@ function sanitise_input($data) {
 }
 
 function check_isset_session($name) {
+	if (!isset($_SESSION))
+		return false;
 	if (!isset($_SESSION[$name]))
 		return false;
-	return !is_null($_SESSION[$name]);
+	return !empty($_SESSION[$name]);
 }
 
 function check_isset_get($name) {
@@ -24,14 +26,25 @@ function check_isset_post($name) {
 	return !empty($_POST[$name]);
 }
 
-function add_cond(&$cond, $name) {
-	if (!check_isset_get($name)) {
+function add_cond_and(&$cond, $name) {
+	if (!check_isset_post($name)) {
 		return;
 	}
 	if (empty($cond))
 		$cond .= "where ";
 	else
 		$cond .= "and ";
-	$cond .= $name . "='" . $_GET[$name] . "' ";
+	$cond .= $name . "='" . $_POST[$name] . "' ";
+}
+
+function add_cond_or(&$cond, $name) {
+	if (!check_isset_post($name)) {
+		return;
+	}
+	if (empty($cond))
+		$cond .= "where ";
+	else
+		$cond .= "or ";
+	$cond .= $name . "='" . $_POST[$name] . "' ";
 }
 ?>

@@ -1,0 +1,13 @@
+/*******
+* Login Page
+********/
+
+#form__login h1 {
+  text-align: center;
+}
+
+#form__login button,
+#form__login h1 {
+  width: 100%;
+}
+

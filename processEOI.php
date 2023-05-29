@@ -159,15 +159,15 @@
 			}
 
 			//Check if the applicant has submmitted more than one EOI under same job position
-			$EOIExistQuery = "SELECT * FROM EOI 
+			$eoi_exist_query = "SELECT * FROM EOI 
 								WHERE job_reference_number = '". mysqli_real_escape_string($conn, $job_reference_num) ."'
 								&& applicant_email = '". mysqli_real_escape_string($conn, $email) ."'";
-			$EOIExistResult = mysqli_query($conn, $EOIExistQuery);
-			$EOIExist = mysqli_num_rows($EOIExistResult) > 0;
+			$eoi_exist_result = mysqli_query($conn, $eoi_exist_query);
+			$eoi_exist = mysqli_num_rows($eoi_exist_result) > 0;
 
-			if (!$EOIExist) {
+			if (!$eoi_exist) {
 				//Insert EOI records
-				$insertEOIQuery = "INSERT INTO EOI (
+				$insert_eoi_query = "INSERT INTO EOI (
 					job_reference_number,
 					applicant_email,
 					skill1,
@@ -187,8 +187,8 @@
 				" . (isset($other_skill) ? "'" . mysqli_real_escape_string($conn, $other_skill). "'" : "NULL") . "
 				)";
 			
-				$insertEOIResult = mysqli_query($conn, $insertEOIQuery);
-				if (!$insertEOIResult) {
+				$insert_eoi_result = mysqli_query($conn, $insert_eoi_query);
+				if (!$insert_eoi_result) {
 					die("<p>Error: There is an error inserting this EOI record.</p>");
 				}
 
@@ -200,7 +200,6 @@
 				echo "<p><a href='index.php'>Home Page</a></p>";
 			}
 
-			mysqli_close($conn);
 			unset($_SESSION["form_data"]);
 		} catch (Exception $e) {
 			$_SESSION["errors"] = $e->getMessage();

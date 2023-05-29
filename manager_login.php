@@ -53,43 +53,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
 	<meta charset="utf-8">
-	<meta n	ame="viewport" content="width=device-width, initial-scale=1.0">
+	<meta ame="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Assignment 1 index">
 	<meta name="keywords" content="navigation bar, index">
 	<meta name="author" content="Burhanuddin kapasi">
 	<title>Javastorm careers</title>
-	<link href="styles/style.css" rel="stylesheet">
 </head>
 
 <body>	
-	<header id="header__home">
+	<header id="header__login">
 		<div id="navbar">
 			<?php require_once "./common/header.inc" ?>
 			<?php
 				require_once("./common/menu.php");
-				navbar("Home");
+				navbar("Login");
 			?>
 		</div>
-		<?php
-			require_once("./common/banner.php");
-			banner("Home");
-		?>
 	</header>
 	<main>
 		<?php if (check_isset_session('login_error')) : ?>
 			<div class="error"><?php echo $_SESSION['login_error']; ?></div>
 		<?php endif; ?>
 
-		<form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-			<label for="username">Username:</label>
-			<input type="text" id="username" name="username" required>
+		<section id="form__login">
+			<form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+				<h1>Login</h1>
+				<div class="form-control">
+					<input type="text" id="username" name="username" maxlength="20" pattern="[A-Za-z]+"
+						placeholder="Username:" required>
+					<label for="username">Username:</label>
+				</div>
 
-			<label for="password">Password:</label>
-			<input type="password" id="password" name="password" required>
+				<div class="form-control">
+					<input type="text" id="password" name="password"
+						placeholder="Password:" required>
+					<label for="password">Password:</label>
+				</div>
 
-			<button type="submit">Log In</button>
-		</form>
+				<button class="btn" type="submit">Log In</button>
+			</form>
+		</section>
 	</main>
+	<?php require_once "./common/footer.inc" ?>
+	<style>
+		<?php require_once 'styles/style.css'; ?>
+		<?php require_once 'styles/pages/manager_login.css'; ?>
+	</style>
+	<style>
+		<?php navbar_css(); ?>
+	</style>
 </body>
 
 </html>

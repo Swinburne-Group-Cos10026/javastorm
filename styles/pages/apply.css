@@ -1,0 +1,41 @@
+/*******
+* Apply Page
+********/
+
+/* Make form grid so that i can have some 
+* input only half size and in the same
+* line as other input */
+#form__apply {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  grid-gap: 10px;
+}
+
+#form__apply h1 {
+  text-align: center;
+}
+
+/* Making some input fullsize */
+#form__apply button,
+#form__apply h1,
+#form__apply h5,
+#street-address__container,
+#surburb-town__container,
+#job-reference-number__container {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  width: 100%;
+}
+
+/* Other skill textarea only pop up if 
+* chosen */
+#skill-others__textarea {
+  margin-top: 1em;
+  display: none;
+  resize: none;
+}
+
+#skill-others:checked ~ #skill-others__textarea {
+  display: block;
+}

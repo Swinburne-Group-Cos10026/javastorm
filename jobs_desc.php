@@ -8,8 +8,6 @@
 	<meta name="keywords" content="HTML, CSS, Job Description, Java Developer">
 	<meta name="author" content="Khai Wen Lee">
 	<title>Java Developer Description</title>
-	<!--Reference for CSS Stylesheet-->
-	<link href="styles/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -55,6 +53,13 @@
 		?>
 	</main>
 	<?php require_once "./common/footer.inc" ?>
+	<style>
+		<?php require_once 'styles/style.css'; ?>
+		<?php require_once 'styles/pages/jobs.css'; ?>
+	</style>
+	<style>
+		<?php navbar_css(); ?>
+	</style>
 </body>
 
 </html>

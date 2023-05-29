@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="author" content="Cong Hiep Pham, Le Minh Vu" />
 	<!--Reference for CSS Stylesheet-->
-	<link href="styles/style.css" rel="stylesheet">
+	<!-- <link href="styles/style.css" rel="stylesheet"> -->
 </head>
 
 <body>
@@ -16,7 +16,7 @@
 		<?php require_once "./common/header.inc" ?>
 		<?php 
 				require_once("./common/menu.php");
-				navbar("Apply");
+				navbar("Login");
 			?>
 		</div>
 	</header>
@@ -138,6 +138,13 @@
 		</form>
 	</main>
 	<?php require_once "./common/footer.inc" ?>
+	<style>
+		<?php require_once 'styles/style.css'; ?>
+		<?php require_once 'styles/pages/apply.css'; ?>
+	</style>
+	<style>
+		<?php navbar_css(); ?>
+	</style>
 </body>
 
 </html>

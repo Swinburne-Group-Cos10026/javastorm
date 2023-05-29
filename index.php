@@ -8,10 +8,9 @@
 	<meta name="keywords" content="navigation bar, index">
 	<meta name="author" content="Burhanuddin kapasi">
 	<title> Javastorm careers</title>
-	<link href="styles/style.css" rel="stylesheet">
 </head>
 
-<body>	
+<body>
 	<header id="header__home">
 		<div id="navbar">
 			<?php require_once "./common/header.inc" ?>
@@ -166,9 +165,13 @@
 		</div>
 	</main>
 	<?php require_once "./common/footer.inc" ?>
-	<!-- <style> -->
-	<!-- 	<?php require_once 'styles/style.css'; ?> -->
-	<!-- </style> -->
+	<style>
+		<?php require_once 'styles/style.css'; ?>
+		<?php require_once 'styles/pages/home.css'; ?>
+	</style>
+	<style>
+		<?php navbar_css(); ?>
+	</style>
 </body>
 
 </html>

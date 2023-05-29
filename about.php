@@ -8,7 +8,6 @@
 	<meta name="description" content="Learn more about our amazing team members!">
 	<!-- Include CSS and JavaScript files for validation -->
 	<meta name="author" content="Indigo Daly, Le Minh Vu">
-	<link href="styles/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -309,6 +308,13 @@
 		</section>
 	</main>
 	<?php require_once "./common/footer.inc" ?>
+	<style>
+		<?php require_once 'styles/style.css'; ?>
+		<?php require_once 'styles/pages/about.css'; ?>
+	</style>
+	<style>
+		<?php navbar_css(); ?>
+	</style>
 </body>
 
 </html>

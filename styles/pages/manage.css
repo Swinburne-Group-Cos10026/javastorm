@@ -1,0 +1,52 @@
+/*******
+* Manage Page
+********/
+#manage-form__container {
+	display: grid;
+  grid-template-columns: repeat(2, 1fr);
+	margin-bottom: 10px;
+}
+
+/* Make form grid so that i can have some 
+* input only half size and in the same
+* line as other input */
+#form__manage {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  grid-gap: 10px;
+}
+
+#form__manage h2,
+#form__manage h1 {
+  text-align: center;
+}
+
+/* Making some input fullsize */
+#form__manage button,
+#form__manage h1,
+#form__manage h2,
+#form__manage h5,
+#job-reference-number__container {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  width: 100%;
+}
+
+.eoi__container {
+  /* show the border of the table */
+  padding: 1px;
+  overflow-x: auto;
+}
+
+.eoi__container table {
+  width: 60%;
+}
+
+.eoi__container table th:nth-child(1) {
+	min-width: 200px;
+}
+
+.eoi__container table th {
+	min-width: 100px;
+}
