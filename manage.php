@@ -10,12 +10,13 @@
 	<title> Javastorm careers</title>
 </head>
 <body>
+	<?php session_start(); ?>
 	<header id="header__job--description">
 		<div id="navbar">
 			<?php require_once "./common/header.inc" ?>
 			<?php 
 				require_once("./common/menu.php");
-				navbar("Jobs");
+				navbar("Manage");
 			?>
 		</div>
 	</header>
@@ -99,7 +100,9 @@
 		<?php
 	// Check if the login form is submitted
 	require_once('common/utils.php');
-	if(session_status() !== PHP_SESSION_ACTIVE) session_start();
+	if (!check_isset_session('user')) {
+		header("location: manager_login.php");
+	}
 
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		try {

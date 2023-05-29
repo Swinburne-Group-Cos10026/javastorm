@@ -4,7 +4,7 @@ session_start();
 
 // redirect if already logged in
 if (check_isset_session('user')) {
-	header("location: index.php");
+	header("location: manage.php");
 	exit();
 }
 
@@ -41,8 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		
 		$_SESSION['user'] = $row;
 		$_SESSION['login_error'] = "";
-		header("Location: index.php");
-		exit();
+		header("Location: manage.php");
 	} catch(Exception $err) {
 		$_SESSION['login_error'] = $err->getMessage();
 	}
@@ -85,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				</div>
 
 				<div class="form-control">
-					<input type="text" id="password" name="password"
+					<input type="password" id="password" name="password"
 						placeholder="Password:" required>
 					<label for="password">Password:</label>
 				</div>
