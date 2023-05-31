@@ -32,7 +32,7 @@
 				<br>
 				<p>Another relationship is between jobs and jobs' description.</p>
 				<p>Since we have a separate page for more detail for each job, we decide to contain it in a separate table to reduce the size</p>
-				<a href="apply.html" class="link">Link.</a>
+				<a href="apply.php" class="link">Link.</a>
 			</section>
 			<section>
 				<h5>Implementations</h5>
@@ -99,7 +99,7 @@ CREATE TABLE EOI (
 				<p>We prepare system to have register system for the admin with a role system.</p>
 				<p>Due to we have met the required number of enhancements, we only introduce the poteintial of what we can expand the login system instead of also implementing register system.</p>
 				<p>Since on Swinburne's sever, the PHP's version is 5.4 which doesn't have the default function password_hash(), we have to created one our own based on bcrypt algorithm.</p>
-				<a href="manager_login.html" class="link">Link.</a>
+				<a href="manager_login.php" class="link">Link.</a>
 			</section>
 			<section>
 				<h5>Implementations</h5>
