@@ -1,3 +1,8 @@
+<?php
+	if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+		header("location: apply.php");
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -199,7 +204,6 @@
 				<br />We have received your Expression of Interest (EOI) for the job position previouly. Kindly await our response.</p>";
 				echo "<p><a href='index.php'>Home Page</a></p>";
 			}
-
 			unset($_SESSION["form_data"]);
 		} catch (Exception $e) {
 			$_SESSION["errors"] = $e->getMessage();
