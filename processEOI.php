@@ -199,11 +199,12 @@
 
 				//Confirmation message
 				echo "<p><strong>EOI submitted successfully!</strong>";
+				echo "<p><strong>Your id is " . mysqli_insert_id($conn) . ".</strong></p>";
 			} else {
 				echo "<p><strong>EOI Submission Received</strong> 
 				<br />We have received your Expression of Interest (EOI) for the job position previouly. Kindly await our response.</p>";
-				echo "<p><a href='index.php'>Home Page</a></p>";
 			}
+			echo "<p><a href='index.php'>Home Page</a></p>";
 			unset($_SESSION["form_data"]);
 		} catch (Exception $e) {
 			$_SESSION["errors"] = $e->getMessage();
