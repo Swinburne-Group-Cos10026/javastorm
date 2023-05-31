@@ -24,7 +24,7 @@
 		<?php
 			try {
 				require_once("common/utils.php");
-				if (check_isset_get($_GET["job"]))
+				if (!check_isset_get("job"))
 					throw new Exception("Please select a job from jobs.php page");
 
 				require_once("dbconfig/settings.php");
