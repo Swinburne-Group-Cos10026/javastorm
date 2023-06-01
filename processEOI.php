@@ -104,20 +104,20 @@
 
 			//Check if the EOI table exists, and create it if necessary
 			$create_eoi_query = "CREATE TABLE IF NOT EXISTS EOI (
-						eoi_id varchar(255) NOT NULL,
-						job_reference_number VARCHAR(255) NOT NULL,
-						applicant_email VARCHAR(255) NOT NULL,
-						skill1 VARCHAR(255),
-						skill2 VARCHAR(255),
-						skill3 VARCHAR(255),
-						skill4 VARCHAR(255),
-						skill5 VARCHAR(255),
-						other_skills TEXT,
-						status ENUM ('New', 'Current', 'Final') DEFAULT 'New',
-						PRIMARY KEY (eoi_id),
-						FOREIGN KEY (job_reference_number) REFERENCES JOB(job_reference_number),
-						FOREIGN KEY (applicant_email) REFERENCES APPLICANTS(email)
-						)";
+				eoi_id  INT NOT NULL AUTO_INCREMENT,
+				job_reference_number VARCHAR(255) NOT NULL,
+				applicant_email VARCHAR(255) NOT NULL,
+				skill1 VARCHAR(255),
+				skill2 VARCHAR(255),
+				skill3 VARCHAR(255),
+				skill4 VARCHAR(255),
+				skill5 VARCHAR(255),
+				other_skills TEXT,
+				status ENUM('New', 'Current', 'Final') DEFAULT 'New',
+				PRIMARY KEY (eoi_id),
+				FOREIGN KEY (job_reference_number) REFERENCES JOB(job_reference_number),
+				FOREIGN KEY (applicant_email) REFERENCES APPLICANTS(email)
+			);";
 			//Execute query & check its execution
 			$create_eoi_result = mysqli_query($conn, $create_eoi_query);
 			if (!$create_eoi_result) {
