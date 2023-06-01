@@ -31,7 +31,7 @@
 							Find Us
 						</a>
 					</li>
-					<li><a href="https://youtu.be/U001EFWfZJg">Youtube Demonstration Video</a></li>
+					<li><a href="https://youtu.be/Cwu3FOV8aXw">Youtube Demonstration Video</a></li>
 				</ul>
 			</section>
 		</div>
