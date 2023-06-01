@@ -104,20 +104,20 @@
 
 			//Check if the EOI table exists, and create it if necessary
 			$create_eoi_query = "CREATE TABLE IF NOT EXISTS EOI (
-						eoi_id varchar(255) NOT NULL,
-						job_reference_number VARCHAR(255) NOT NULL,
-						applicant_email VARCHAR(255) NOT NULL,
-						skill1 VARCHAR(255),
-						skill2 VARCHAR(255),
-						skill3 VARCHAR(255),
-						skill4 VARCHAR(255),
-						skill5 VARCHAR(255),
-						other_skills TEXT,
-						status ENUM ('New', 'Current', 'Final') DEFAULT 'New',
-						PRIMARY KEY (eoi_id),
-						FOREIGN KEY (job_reference_number) REFERENCES JOB(job_reference_number),
-						FOREIGN KEY (applicant_email) REFERENCES APPLICANTS(email)
-						)";
+				eoi_id  BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+				job_reference_number VARCHAR(255) NOT NULL,
+				applicant_email VARCHAR(255) NOT NULL,
+				skill1 VARCHAR(255),
+				skill2 VARCHAR(255),
+				skill3 VARCHAR(255),
+				skill4 VARCHAR(255),
+				skill5 VARCHAR(255),
+				other_skills TEXT,
+				status ENUM('New', 'Current', 'Final') DEFAULT 'New',
+				PRIMARY KEY (eoi_id),
+				FOREIGN KEY (job_reference_number) REFERENCES JOB(job_reference_number),
+				FOREIGN KEY (applicant_email) REFERENCES APPLICANTS(email)
+			);";
 			//Execute query & check its execution
 			$create_eoi_result = mysqli_query($conn, $create_eoi_query);
 			if (!$create_eoi_result) {
@@ -132,11 +132,21 @@
 			if (!$job_exist)
 				throw new Exception("This job does not exist.");
 
+			$mysqli_first_name = mysqli_real_escape_string($conn, $first_name);
+			$mysqli_last_name = mysqli_real_escape_string($conn, $last_name);
+			$mysqli_street_addr = mysqli_real_escape_string($conn, $street_addr);
+			$mysqli_suburb_town = mysqli_real_escape_string($conn, $suburb_town);
+			$mysqli_state = mysqli_real_escape_string($conn, $state);
+			$mysqli_postcode = intval($postcode);
+			$mysqli_email = mysqli_real_escape_string($conn, $email);
+			$mysqli_phone_num = mysqli_real_escape_string($conn, $phone_num);
+
 			//Check email existence in the APPICANTS table
-			$email_exist_query = "SELECT * FROM APPLICANTS WHERE email = '". mysqli_real_escape_string($conn, $email) ."'";
+			$email_exist_query = "SELECT * FROM APPLICANTS WHERE email = '$mysqli_email'";
 			$email_exist_result = mysqli_query($conn, $email_exist_query);
 			$email_exist = mysqli_num_rows($email_exist_result) > 0;
 			//Insert into Applicants if email does not exist
+
 			if (!$email_exist) {
 				$insert_applicant_query = "INSERT INTO APPLICANTS (
 					first_name,
@@ -148,15 +158,15 @@
 					email,
 					phone_number
 				) VALUES (
-					'" . mysqli_real_escape_string($conn, $first_name) ."',
-					'" . mysqli_real_escape_string($conn, $last_name) ."',
-					'" . mysqli_real_escape_string($conn, $street_addr) ."',
-					'" . mysqli_real_escape_string($conn, $suburb_town) ."',
-					'" . mysqli_real_escape_string($conn, $state) ."',
-					'" . intval($postcode) ."',
-					'" . mysqli_real_escape_string($conn, $email) ."',
-					'" . mysqli_real_escape_string($conn, $phone_num) ."'
-				)";   
+					'$mysqli_first_name',
+					'$mysqli_last_name',
+					'$mysqli_street_addr',
+					'$mysqli_suburb_town',
+					'$mysqli_state',
+					'$mysqli_postcode',
+					'$mysqli_email',
+					'$mysqli_phone_num'
+				)";
 				$insert_applicant_result = mysqli_query($conn, $insert_applicant_query);
 				if (!$insert_applicant_result) {
 					die("<p>Error: There is an error inserting applicant's record.</p>");
@@ -183,7 +193,7 @@
 					other_skills
 				) VALUES (
 				'" . mysqli_real_escape_string($conn, $job_reference_num). "',
-				'" . mysqli_real_escape_string($conn, $email). "',
+				'$mysqli_email',
 				" . (isset($skills[0]) ? "'" . mysqli_real_escape_string($conn, $skills[0]). "'" : "NULL") . ",
 				" . (isset($skills[1]) ? "'" . mysqli_real_escape_string($conn, $skills[1]). "'" : "NULL") . ",
 				" . (isset($skills[2]) ? "'" . mysqli_real_escape_string($conn, $skills[2]). "'" : "NULL") . ",
