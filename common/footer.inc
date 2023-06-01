@@ -22,9 +22,9 @@
 			<section>
 				<h5>Quick Links</h5>
 				<ul class="footer-links">
-					<li><a href="about.html">About Us</a></li>
-					<li><a href="apply.html">Apply</a></li>
-					<li><a href="jobs.html">Jobs</a></li>
+					<li><a href="about.php">About Us</a></li>
+					<li><a href="apply.php">Apply</a></li>
+					<li><a href="jobs.php">Jobs</a></li>
 					<li>
 						<a
 							href="https://www.google.com/maps/place/Swinburne+University+of+Technology/@-37.8221504,145.0367659,17z/data=!3m1!4b1!4m6!3m5!1s0x6ad642326bae5aaf:0x75e96bbd4988f769!8m2!3d-37.8221504!4d145.0389546!16zL20vMDFrcV9z">

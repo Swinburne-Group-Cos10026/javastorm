@@ -44,7 +44,7 @@
 
 				mysqli_close($conn);
 
-				echo "<a class='btn' href='apply.html'>Apply</a>";
+				echo "<a class='btn' href='apply.php'>Apply</a>";
 			} catch(Exception $err) {
 				echo "<section><h1>Job Not Found</h1></section>";
 				echo "<p>ERROR: " . $err->getMessage() . "</p>";
