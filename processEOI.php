@@ -93,7 +93,7 @@
 			//Database
 			require_once("dbconfig/settings.php");
 
-			$conn = mysqli_connect($host.':'.$port, $user,$pwd,$sql_db);
+			$conn = mysqli_connect($host, $user,$pwd,$sql_db);
 
 			$applicants_table = "APPLICANTS";
 			$eoi_table = "EOI";

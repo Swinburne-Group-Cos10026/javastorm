@@ -29,7 +29,7 @@
 			try {
 				require_once("dbconfig/settings.php");
 				$conn = mysqli_connect(
-					$host.':'.$port,
+					$host,
 					$user,
 					$pwd,
 					$sql_db
