@@ -1,3 +1,6 @@
+<?php
+	require_once ('./dbconfig/dbhelper.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +11,8 @@
 	<meta name="keywords" content="navigation bar, index">
 	<meta name="author" content="Burhanuddin kapasi">
 	<title> Javastorm careers</title>
+	<link href="styles/style.css" rel="stylesheet">
+	<link href="styles/pages/manage.css" rel="stylesheet">
 </head>
 <body>
 	<?php session_start(); ?>
@@ -68,10 +73,10 @@
 				<h2 class="center">Delete</h2>
 				<div class="form-control" id="job-reference-number__container">
 					<select name="delete" id="job_reference_number-delete">
-						<option value="" selected>All</option>
+						<option value="" selected>Choose job reference number</option>
 						<?php
 							foreach ($jobs as $job_reference_number => $position) {
-								echo "<option value='$job_reference_number'>$position</option>";
+								echo "<option value='$job_reference_number'>$position ($job_reference_number)</option>";
 							}
 						?>
 					</select>
@@ -104,68 +109,74 @@
 		header("location: manager_login.php");
 	}
 
-	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+	{
 		try {
 			$sql = "";
-			if (check_isset_post('status') && check_isset_post('eoi_id')) { // in update mode
+			$fN = isset($_POST['first_name']) && $_POST['first_name'] != '';
+			$lN = isset($_POST['last_name']) && $_POST['last_name'] != '';
+			$p = isset($_POST['job_reference_number']) && $_POST['job_reference_number'] != '';
+			$s = isset($_POST['status']) && $_POST['status'] != '';
+			$e = isset($_POST['eoi_id']) && $_POST['eoi_id'] != '';
+			$d = isset($_POST['delete']) && $_POST['delete'] != '';
+			
+			if($s && $e) {
 				$sql = "UPDATE EOI SET status='" . $_POST['status'] . "' WHERE eoi_id=" . $_POST['eoi_id'];
 				mysqli_query($conn, $sql);
-				mysqli_close($conn);
-				exit();
+			} 
+			if($d) {
+				$sql = 'DELETE from EOI where job_reference_number = "'.$_POST['delete'].'"';
+				mysqli_query($conn, $sql);
 			}
-
-			if (isset($_POST['delete'])) { // in delete mode
-				$sql = "DELETE FROM EOI ";
-				if (!empty($_POST['delete']))
-					$sql .= "WHERE job_reference_number='" . $_POST['delete'] . "'";
-				mysqli_query($conn, $sql . ";");
-				mysqli_close($conn);
-				exit();
-			}
-
 			$sql = "select * from APPLICANTS RIGHT JOIN EOI ON email=applicant_email ";
-			$cond = "";
-
-			add_cond_and($cond, "first_name");
-			add_cond_and($cond, "last_name");
-			add_cond_and($cond, "job_reference_number");
-
-			$sql .= $cond . ";";
-
-			$result = mysqli_query($conn, $sql);
-			if (mysqli_num_rows($result) == 0)
-				throw new Exception("Can't find this EOI");
-
-			while ($row = mysqli_fetch_assoc($result)) {
-						echo '
-				<tr>
-					<td>
-						<form method="post">
-							<input style="display: none;" type="text" name="eoi_id" value="'.$row['eoi_id'].'">
-							<div class="form-control">
-								<select name="status" id="status">
-									<option value="" disabled selected>Update Status</option>
-									<option value="New">New</option>
-									<option value="Current">Current</option>
-									<option value="Final">Final</option>
-								</select>
-								<label for="status">State:</label>
-							</div>
-							<button class="link" type="submit" value="ChangeStatus">Change Status</button>
-						</form>
-					</td>
-					<td>'.$row['job_reference_number'].'</td>
-					<td>'.$row['first_name'].'</td>
-					<td>'.$row['last_name'].'</td>
-					<td>'.$row['street_address'].'</td>
-					<td>'.$row['suburb_town'].'</td>
-					<td>'.$row['state'].'</td>
-					<td>'.$row['postcode'].'</td>
-					<td>'.$row['email'].'</td>
-					<td>'.$row['phone_number'].'</td>
-					<td>'.$row['status'].'</td>
-				</tr>';
+			if($fN && $lN && $p) {
+				$sql .= ' where first_name like "'.$_POST['first_name'].'%" and last_name like "'.$_POST['last_name'].'%" and job_reference_number = "'.$_POST['job_reference_number'].'"';
+			} else if($fN && $lN) {
+				$sql .= ' where first_name like "'.$_POST['first_name'].'%" and last_name like "'.$_POST['last_name'].'%"';
+			} else if($fN && $p) {
+				$sql .= ' where first_name like "'.$_POST['first_name'].'%" and job_reference_number = "'.$_POST['job_reference_number'].'"';
+			} else if($lN && $p) {
+				$sql .= ' where last_name like "'.$_POST['last_name'].'%" and job_reference_number = "'.$_POST['job_reference_number'].'"';
+			} else if($fN) {
+				$sql .= ' where first_name like "'.$_POST['first_name'].'%"';
+			} else if($lN) {
+				$sql .= ' where last_name like "'.$_POST['last_name'].'%"';
+			} else if($p) {
+				$sql .= ' where job_reference_number = "'.$_POST['job_reference_number'].'"';
 			}
+			$result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) == 0)
+                throw new Exception("Can't find this EOI");
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                        echo '
+                <tr>
+                    <td>
+                        <form method="post">
+                            <input style="display: none;" type="text" name="eoi_id" value="'.$row['eoi_id'].'">
+                            <div class="form-control">
+                                <select name="status" id="status">
+                                    <option value="" disabled selected>Update Status</option>
+                                    <option value="New">New</option>
+                                    <option value="Current">Current</option>
+                                    <option value="Final">Final</option>
+                                </select>
+                                <label for="status">State:</label>
+                            </div>
+                            <button class="link" type="submit" value="ChangeStatus">Change Status</button>
+                        </form>
+                    </td>
+                    <td>'.$row['job_reference_number'].'</td>
+                    <td>'.$row['first_name'].'</td>
+                    <td>'.$row['last_name'].'</td>
+                    <td>'.$row['street_address'].'</td>
+                    <td>'.$row['suburb_town'].'</td>
+                    <td>'.$row['state'].'</td>
+                    <td>'.$row['postcode'].'</td>
+                    <td>'.$row['email'].'</td>
+                    <td>'.$row['phone_number'].'</td>
+                    <td>'.$row['status'].'</td>
+                </tr>';
+            }
 		} catch(Exception $err) {
 		}
 	}
@@ -175,10 +186,6 @@
 		</section>
 	</main>
 	<?php include "./common/footer.inc" ?>
-	<style>
-		<?php require_once 'styles/style.css'; ?>
-		<?php require_once 'styles/pages/manage.css'; ?>
-	</style>
 	<style>
 		<?php navbar_css(); ?>
 	</style>
