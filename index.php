@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +16,6 @@
 <body>
 	<header id="header__home">
 		<div id="navbar">
-			<?php session_start(); ?>
 			<?php require_once "./common/header.inc" ?>
 			<?php
 				require_once("./common/menu.php");
@@ -28,7 +29,6 @@
 	</header>
 	<main>
 		<?php
-			session_start();
 			require_once('common/utils.php');
 			$_SESSION['user'] = null;
 		?>
