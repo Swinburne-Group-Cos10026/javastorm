@@ -1,9 +1,4 @@
 <?php
-	if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-		header("location: apply.php");
-	}
-?>
-<?php
 	session_start();
 ?>
 <!DOCTYPE html>
@@ -211,7 +206,7 @@
 				//Confirmation message
 				echo "<p><strong>EOI submitted successfully!</strong>";
 				echo "<p><strong>Your id is " . mysqli_insert_id($conn) . ".</strong></p>";
-				} catch(Exception $e) {
+				} catch(Exception $e)	 {
 					echo "<p><strong>EOI Submission Received</strong> 
 					<br />We have received a large number of application.</p>";
 				}
