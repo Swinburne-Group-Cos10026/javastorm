@@ -1,5 +1,6 @@
 <?php
-	$host = "feenix-mariadb.swin.edu.au";
-	$user = "s103809103"; // your user name
-	$pwd = "021103"; // your password (date of birth ddmmyy unless changed)
-	$sql_db = "s103809103_db"; // your database
+	$host = "containers-us-west-2.railway.app";
+	$user = "root"; // your user name
+	$pwd = "ukAGqzE4gyEW3XNjmWtW"; // your password (date of birth ddmmyy unless changed)
+	$sql_db = "railway"; // your database
+	$port = "6759";
