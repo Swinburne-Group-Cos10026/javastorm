@@ -1,7 +1,8 @@
+<?php
+	session_start();
+?>
 <?php 
 require_once('common/utils.php');
-session_start();
-
 // redirect if already logged in
 if (check_isset_session('user')) {
 	header("location: index.php");
@@ -94,3 +95,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </body>
 
 </html>
+

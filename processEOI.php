@@ -3,6 +3,9 @@
 		header("location: apply.php");
 	}
 ?>
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +19,6 @@
 	<h1>EOI Submission Confirmation</h1>
 	<?php
 		error_reporting(E_ALL & ~E_NOTICE);
-		session_start(); //store the EOInumber so that it can be accessed from the confirmation page
-
 		require_once("common/utils.php");
 		require_once("common/validations.php");
 

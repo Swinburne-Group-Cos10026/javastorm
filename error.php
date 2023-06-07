@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +13,6 @@
 <body>
     <h1>Error</h1>
     <?php
-        session_start();
 				require_once("common/utils.php");
         
 				if (check_isset_session("errors")) {

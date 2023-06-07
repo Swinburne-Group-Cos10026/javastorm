@@ -1,4 +1,7 @@
 <?php
+	session_start();
+?>
+<?php
 	require_once ('./dbconfig/dbhelper.php');
 ?>
 <!DOCTYPE html>
@@ -15,7 +18,6 @@
 	<link href="styles/pages/manage.css" rel="stylesheet">
 </head>
 <body>
-	<?php session_start(); ?>
 	<header id="header__job--description">
 		<div id="navbar">
 			<?php require_once "./common/header.inc" ?>

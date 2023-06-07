@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -13,7 +16,6 @@
 <body>
 	<header id="header__about">
 		<div id="navbar">
-		<?php session_start(); ?>
 		<?php require_once "./common/header.inc" ?>
 		<?php 
 				require_once("./common/menu.php");

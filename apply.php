@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -12,8 +15,6 @@
 
 <body>
 	<?php 
-	session_start();
-
 	//function to populate form field values from session data
 	function populateFormField($fieldName, $fieldValue = null) {
 		if (isset($_SESSION["form_data"]) && isset($_SESSION["form_data"][$fieldName])) {
