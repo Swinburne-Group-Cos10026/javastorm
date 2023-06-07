@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	try {
 		require_once("dbconfig/settings.php");
 		$conn = mysqli_connect(
-			$host,
+			$host.':'.$port,
 			$user,
 			$pwd,
 			$sql_db
