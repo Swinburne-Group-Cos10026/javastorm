@@ -14,7 +14,6 @@
     <h1>Error</h1>
     <?php
 				require_once("common/utils.php");
-        
 				if (check_isset_session("errors")) {
 					$err_msg = $_SESSION["errors"];
 					echo $err_msg;

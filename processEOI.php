@@ -220,7 +220,7 @@
 			unset($_SESSION["form_data"]);
 		} catch (Exception $e) {
 			$_SESSION["errors"] = $e->getMessage();
-			header("location: error.php");
+			echo "<script>window.location.href ='error.php'";
 		}
 	?>
 </body>
