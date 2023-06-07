@@ -181,7 +181,7 @@
 			$eoi_exist_result = mysqli_query($conn, $eoi_exist_query);
 			$eoi_exist = mysqli_num_rows($eoi_exist_result) > 0;
 
-			if (!$eoi_exist) {
+			try {
 				//Insert EOI records
 				$insert_eoi_query = "INSERT INTO EOI (
 					job_reference_number,
@@ -211,15 +211,15 @@
 				//Confirmation message
 				echo "<p><strong>EOI submitted successfully!</strong>";
 				echo "<p><strong>Your id is " . mysqli_insert_id($conn) . ".</strong></p>";
-			} else {
-				echo "<p><strong>EOI Submission Received</strong> 
-				<br />We have received your Expression of Interest (EOI) for the job position previouly. Kindly await our response.</p>";
-			}
+				} catch(Exception $e) {
+					echo "<p><strong>EOI Submission Received</strong> 
+					<br />We have received a large number of application.</p>";
+				}
+			
 			echo "<p><a href='index.php'>Home Page</a></p>";
 			unset($_SESSION["form_data"]);
 		} catch (Exception $e) {
 			$_SESSION["errors"] = $e->getMessage();
-			mysqli_close($conn);
 			header("location: error.php");
 		}
 	?>
