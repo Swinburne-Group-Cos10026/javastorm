@@ -79,6 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		<section id="form__login">
 			<form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
 				<h1>Login</h1>
+				<h2>username: test, password: test</h2>
 				<div class="form-control">
 					<input type="text" id="username" name="username" maxlength="20" pattern="[A-Za-z]+"
 						placeholder="Username:" required>
